@@ -95,6 +95,8 @@ docker exec -it schema-registry bash
 
 ```
 
+- Run the kafka-avro-console-consumer
+
 ```
 kafka-avro-console-consumer --bootstrap-server broker:29092 --topic greetings --from-beginning
 ```
