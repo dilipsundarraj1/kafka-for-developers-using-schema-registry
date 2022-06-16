@@ -1,0 +1,11 @@
+{
+  "name": "Greeting",
+  "namespace": "com.learnavro",
+  "type": "record",
+  "fields": [
+    {
+      "name": "greeting",
+      "type": "string"
+    }
+  ]
+}

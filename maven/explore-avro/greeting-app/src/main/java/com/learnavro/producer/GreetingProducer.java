@@ -17,7 +17,6 @@ public class GreetingProducer {
 
     private static final Logger LOG = LoggerFactory.getLogger(GreetingProducer.class);
     private static final String GREETING_TOPIC = "greeting";
-    private static final String GREETING_STRING_TOPIC = "greeting_string";
 
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
         Properties props = new Properties();
@@ -39,7 +38,6 @@ public class GreetingProducer {
         System.out.println("recordMetaData : " + recordMetaData);
 
     }
-
 
     private static Greeting buildGreeting(String message) {
 
