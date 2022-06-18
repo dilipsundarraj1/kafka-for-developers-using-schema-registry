@@ -1,0 +1,22 @@
+{
+  "id": 164,
+  "name": "Dilip Sundarraj",
+  "nickName": "",
+  "store": {
+    "id": 205,
+    "address": {
+      "addressLine1": "1234 Address Line 1",
+      "city": "Chicago",
+      "state_province": "IL",
+      "country": "USA",
+      "zip": "12345"
+    }
+  },
+  "orderLineItems": [{
+    "name": "Caffe Latte",
+    "size": "MEDIUM",
+    "quantity": 1
+  }],
+  "ordered_time": "2022-06-16T18:40:55.472",
+ "status": "NEW"
+}
