@@ -1,5 +1,8 @@
-package com.learnavro;
+package com.learnavro.producer;
 
+import com.learnavro.domain.generated.CoffeeUpdateEvent;
+import com.learnavro.domain.generated.OrderId;
+import com.learnavro.domain.generated.OrderStatus;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import io.confluent.kafka.serializers.KafkaAvroSerializerConfig;
 import io.confluent.kafka.serializers.subject.RecordNameStrategy;

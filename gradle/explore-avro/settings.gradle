@@ -12,4 +12,5 @@ rootProject.name = 'explore-avro'
 include 'greeting-app'
 include 'schemas'
 include 'coffee-orders-service'
+include 'coffee-orders-consumer'
 

@@ -1,4 +1,4 @@
-package com.learnavro;
+package com.learnavro.producer;
 
 import com.learnavro.domain.generated.CoffeeOrder;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
