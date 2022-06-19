@@ -1,0 +1,19 @@
+{
+  "name": "CoffeeUpdateEvent",
+  "namespace": "com.learnavro.domain.generated",
+  "type": "record",
+  "fields": [
+    {
+      "name": "id",
+      "type": "OrderId"
+    },
+    {
+      "name": "status",
+      "type":{
+        "type" : "enum",
+        "name": "OrderStatus",
+        "symbols" : ["PROCESSING", "READY_FOR_PICK_UP"]
+      }
+    }
+  ]
+}

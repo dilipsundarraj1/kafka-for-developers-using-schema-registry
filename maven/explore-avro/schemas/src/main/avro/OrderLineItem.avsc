@@ -1,0 +1,34 @@
+{
+  "name": "OrderLineItem",
+  "namespace": "com.learnavro.domain.generated",
+  "type": "record",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "size",
+      "type":{
+        "type" : "enum",
+        "name": "Size",
+        "symbols" : ["SMALL", "MEDIUM", "LARGE"]
+      }
+    },
+    {
+      "name" : "quantity",
+      "type" : "int"
+    },
+    {
+      "name" : "cost",
+      "type":{
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 3,
+        "scale": 2
+
+      }
+    }
+
+  ]
+}
