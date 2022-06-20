@@ -9,7 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>schemas</artifactId>
+    <artifactId>greeting-app</artifactId>
+    <repositories>
+        <repository>
+            <id>confluent</id>
+            <name>Confluent</name>
+            <url>https://packages.confluent.io/maven/</url>
+        </repository>
+    </repositories>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -49,12 +56,6 @@
                         <configuration>
                             <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
                             <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
-                            <imports>
-                                <import>${project.basedir}/src/main/avro/Address.avsc</import>
-                                <import>${project.basedir}/src/main/avro/OrderId.avsc</import>
-                                <import>${project.basedir}/src/main/avro/OrderLineItem.avsc</import>
-                                <import>${project.basedir}/src/main/avro/Store.avsc</import>
-                            </imports>
                         </configuration>
                     </execution>
                 </executions>

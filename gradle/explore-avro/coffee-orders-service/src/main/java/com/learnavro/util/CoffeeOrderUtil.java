@@ -27,9 +27,9 @@ public class CoffeeOrderUtil {
 
     }
 
-    public static CoffeeOrderV2 buildNewCoffeeOrderV2(){
+    public static CoffeeOrderOld buildNewCoffeeOrderV2(){
 
-        return CoffeeOrderV2.newBuilder()
+        return CoffeeOrderOld.newBuilder()
                 .setId(randomId())
                 .setName("Chicago 1234")
                 .setStore(generateStore())

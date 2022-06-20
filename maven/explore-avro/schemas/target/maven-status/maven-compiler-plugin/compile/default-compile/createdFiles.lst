@@ -1,0 +1,17 @@
+com/learnavro/domain/generated/OrderStatus.class
+com/learnavro/domain/generated/Store$Builder.class
+com/learnavro/domain/generated/CoffeeOrder$Builder.class
+com/learnavro/domain/generated/OrderId$Builder.class
+com/learnavro/domain/generated/Size.class
+com/learnavro/domain/generated/CoffeeUpdateEvent.class
+com/learnavro/domain/generated/Store.class
+com/learnavro/domain/generated/OrderLineItem.class
+com/learnavro/domain/generated/OrderId.class
+com/learnavro/domain/generated/CoffeeUpdateEvent$Builder.class
+com/learnavro/domain/generated/Address$Builder.class
+com/learnavro/domain/generated/Address.class
+com/learnavro/domain/generated/OrderLineItem$Builder.class
+com/learnavro/domain/generated/CoffeeOrderOld.class
+com/learnavro/domain/generated/PickUp.class
+com/learnavro/domain/generated/CoffeeOrderOld$Builder.class
+com/learnavro/domain/generated/CoffeeOrder.class

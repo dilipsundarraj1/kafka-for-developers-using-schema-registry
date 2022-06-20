@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>schemas</module>
         <module>greeting-app</module>
+        <module>schemas</module>
     </modules>
 
     <repositories>

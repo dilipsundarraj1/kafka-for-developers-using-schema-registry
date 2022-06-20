@@ -24,14 +24,9 @@ dependencies {
     implementation "org.apache.avro:avro:1.10.1"
 
     implementation "org.apache.avro:avro-tools:${avroVersion}"
-    implementation("com.konghq:unirest-java:3.1.02")
 
     //avro-serializer
     implementation( "io.confluent:kafka-avro-serializer:5.5.1")
-
-    //json-serializer
-    implementation( "io.confluent:kafka-json-schema-serializer:5.5.1")
-    implementation( "com.kjetland:mbknor-jackson-jsonschema_2.13:1.0.39")
 
     //test-implementation
     testImplementation "org.junit.jupiter:junit-jupiter:5.6.2"

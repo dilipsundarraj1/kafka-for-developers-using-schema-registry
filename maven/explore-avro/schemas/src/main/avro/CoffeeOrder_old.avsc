@@ -1,5 +1,5 @@
 {
-  "name": "CoffeeOrderV2",
+  "name": "CoffeeOrderOld",
   "namespace": "com.learnavro.domain.generated",
   "type": "record",
   "fields": [
