@@ -11,6 +11,7 @@
     <modules>
         <module>schemas</module>
         <module>greeting-app</module>
+        <module>coffee-orders-service</module>
     </modules>
 
     <repositories>

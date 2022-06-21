@@ -4,6 +4,7 @@ import com.learnavro.domain.generated.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
@@ -11,7 +12,7 @@ import java.util.Random;
 public class CoffeeOrderUtil {
 
     public static CoffeeOrder buildNewCoffeeOrder(){
-        var orderId=   new OrderId().newBuilder()
+        var orderId=   OrderId.newBuilder()
                 .setId(randomId())
                 .build();
 
@@ -22,6 +23,7 @@ public class CoffeeOrderUtil {
                 .setStore(generateStore())
                 .setOrderLineItems(generateOrderLineItems())
                 .setOrderedTime(Instant.now())
+                .setInceptionDate(LocalDate.now())
                .setPickUp(PickUp.IN_STORE)
                 .build();
 
@@ -75,5 +77,9 @@ public class CoffeeOrderUtil {
     public static int randomId(){
          Random random = new Random();
          return random.nextInt(1000);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Instant.now());
     }
 }

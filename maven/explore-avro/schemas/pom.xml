@@ -20,14 +20,22 @@
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
-            <version>1.10.1</version>
+            <version>1.11.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.confluent</groupId>
-            <artifactId>kafka-avro-serializer</artifactId>
-            <version>5.5.1</version>
-        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>io.confluent</groupId>-->
+<!--            <artifactId>kafka-avro-serializer</artifactId>-->
+<!--            <version>5.5.1</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>joda-time</groupId>-->
+<!--            <artifactId>joda-time</artifactId>-->
+<!--            <version>2.10.14</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <build>
@@ -55,6 +63,8 @@
                                 <import>${project.basedir}/src/main/avro/OrderLineItem.avsc</import>
                                 <import>${project.basedir}/src/main/avro/Store.avsc</import>
                             </imports>
+                            <enableDecimalLogicalType>true</enableDecimalLogicalType>
+                            <dateTimeLogicalTypeImplementation>jsr310</dateTimeLogicalTypeImplementation>
                         </configuration>
                     </execution>
                 </executions>

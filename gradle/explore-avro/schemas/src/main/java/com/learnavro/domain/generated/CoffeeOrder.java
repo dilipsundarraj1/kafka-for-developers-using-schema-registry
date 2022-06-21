@@ -14,13 +14,14 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -735474296123259975L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"record\",\"name\":\"OrderId\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nickName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"\"},{\"name\":\"store\",\"type\":{\"type\":\"record\",\"name\":\"Store\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"fields\":[{\"name\":\"addressLine1\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"city\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"state_province\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"country\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"USA\"},{\"name\":\"zip\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":2}}]}}},{\"name\":\"ordered_time\",\"type\":{\"type\":\"long\",\"logicalType\":\"local-timestamp-millis\"}},{\"name\":\"pick_up\",\"type\":{\"type\":\"enum\",\"name\":\"PickUp\",\"symbols\":[\"IN_STORE\",\"CURBSIDE\"]}},{\"name\":\"status\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"NEW\"}]}");
+  private static final long serialVersionUID = 2144888531837705811L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"record\",\"name\":\"OrderId\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nickName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"\"},{\"name\":\"store\",\"type\":{\"type\":\"record\",\"name\":\"Store\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"fields\":[{\"name\":\"addressLine1\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"city\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"state_province\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"country\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"USA\"},{\"name\":\"zip\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":2}}]}}},{\"name\":\"ordered_time\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"pick_up\",\"type\":{\"type\":\"enum\",\"name\":\"PickUp\",\"symbols\":[\"IN_STORE\",\"CURBSIDE\"]}},{\"name\":\"inceptionDate\",\"type\":{\"type\":\"int\",\"logicalType\":\"date\"}},{\"name\":\"status\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"NEW\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 static {
-    MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.LocalTimestampMillisConversion());
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.DateConversion());
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.TimestampMillisConversion());
     MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.DecimalConversion());
   }
 
@@ -80,8 +81,9 @@ static {
   @Deprecated public java.lang.String nickName;
   @Deprecated public com.learnavro.domain.generated.Store store;
   @Deprecated public java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems;
-  @Deprecated public java.time.LocalDateTime ordered_time;
+  @Deprecated public java.time.Instant ordered_time;
   @Deprecated public com.learnavro.domain.generated.PickUp pick_up;
+  @Deprecated public java.time.LocalDate inceptionDate;
   @Deprecated public java.lang.String status;
 
   /**
@@ -100,16 +102,18 @@ static {
    * @param orderLineItems The new value for orderLineItems
    * @param ordered_time The new value for ordered_time
    * @param pick_up The new value for pick_up
+   * @param inceptionDate The new value for inceptionDate
    * @param status The new value for status
    */
-  public CoffeeOrder(com.learnavro.domain.generated.OrderId id, java.lang.String name, java.lang.String nickName, com.learnavro.domain.generated.Store store, java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems, java.time.LocalDateTime ordered_time, com.learnavro.domain.generated.PickUp pick_up, java.lang.String status) {
+  public CoffeeOrder(com.learnavro.domain.generated.OrderId id, java.lang.String name, java.lang.String nickName, com.learnavro.domain.generated.Store store, java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems, java.time.Instant ordered_time, com.learnavro.domain.generated.PickUp pick_up, java.time.LocalDate inceptionDate, java.lang.String status) {
     this.id = id;
     this.name = name;
     this.nickName = nickName;
     this.store = store;
     this.orderLineItems = orderLineItems;
-    this.ordered_time = ordered_time;
+    this.ordered_time = ordered_time.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
     this.pick_up = pick_up;
+    this.inceptionDate = inceptionDate;
     this.status = status;
   }
 
@@ -125,7 +129,8 @@ static {
     case 4: return orderLineItems;
     case 5: return ordered_time;
     case 6: return pick_up;
-    case 7: return status;
+    case 7: return inceptionDate;
+    case 8: return status;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -137,8 +142,9 @@ static {
       null,
       null,
       null,
-      new org.apache.avro.data.TimeConversions.LocalTimestampMillisConversion(),
+      new org.apache.avro.data.TimeConversions.TimestampMillisConversion(),
       null,
+      new org.apache.avro.data.TimeConversions.DateConversion(),
       null,
       null
   };
@@ -157,9 +163,10 @@ static {
     case 2: nickName = value$ != null ? value$.toString() : null; break;
     case 3: store = (com.learnavro.domain.generated.Store)value$; break;
     case 4: orderLineItems = (java.util.List<com.learnavro.domain.generated.OrderLineItem>)value$; break;
-    case 5: ordered_time = (java.time.LocalDateTime)value$; break;
+    case 5: ordered_time = (java.time.Instant)value$; break;
     case 6: pick_up = (com.learnavro.domain.generated.PickUp)value$; break;
-    case 7: status = value$ != null ? value$.toString() : null; break;
+    case 7: inceptionDate = (java.time.LocalDate)value$; break;
+    case 8: status = value$ != null ? value$.toString() : null; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -253,7 +260,7 @@ static {
    * Gets the value of the 'ordered_time' field.
    * @return The value of the 'ordered_time' field.
    */
-  public java.time.LocalDateTime getOrderedTime() {
+  public java.time.Instant getOrderedTime() {
     return ordered_time;
   }
 
@@ -262,8 +269,8 @@ static {
    * Sets the value of the 'ordered_time' field.
    * @param value the value to set.
    */
-  public void setOrderedTime(java.time.LocalDateTime value) {
-    this.ordered_time = value;
+  public void setOrderedTime(java.time.Instant value) {
+    this.ordered_time = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
   }
 
   /**
@@ -281,6 +288,23 @@ static {
    */
   public void setPickUp(com.learnavro.domain.generated.PickUp value) {
     this.pick_up = value;
+  }
+
+  /**
+   * Gets the value of the 'inceptionDate' field.
+   * @return The value of the 'inceptionDate' field.
+   */
+  public java.time.LocalDate getInceptionDate() {
+    return inceptionDate;
+  }
+
+
+  /**
+   * Sets the value of the 'inceptionDate' field.
+   * @param value the value to set.
+   */
+  public void setInceptionDate(java.time.LocalDate value) {
+    this.inceptionDate = value;
   }
 
   /**
@@ -348,8 +372,9 @@ static {
     private com.learnavro.domain.generated.Store store;
     private com.learnavro.domain.generated.Store.Builder storeBuilder;
     private java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems;
-    private java.time.LocalDateTime ordered_time;
+    private java.time.Instant ordered_time;
     private com.learnavro.domain.generated.PickUp pick_up;
+    private java.time.LocalDate inceptionDate;
     private java.lang.String status;
 
     /** Creates a new Builder */
@@ -397,9 +422,13 @@ static {
         this.pick_up = data().deepCopy(fields()[6].schema(), other.pick_up);
         fieldSetFlags()[6] = other.fieldSetFlags()[6];
       }
-      if (isValidValue(fields()[7], other.status)) {
-        this.status = data().deepCopy(fields()[7].schema(), other.status);
+      if (isValidValue(fields()[7], other.inceptionDate)) {
+        this.inceptionDate = data().deepCopy(fields()[7].schema(), other.inceptionDate);
         fieldSetFlags()[7] = other.fieldSetFlags()[7];
+      }
+      if (isValidValue(fields()[8], other.status)) {
+        this.status = data().deepCopy(fields()[8].schema(), other.status);
+        fieldSetFlags()[8] = other.fieldSetFlags()[8];
       }
     }
 
@@ -439,9 +468,13 @@ static {
         this.pick_up = data().deepCopy(fields()[6].schema(), other.pick_up);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.status)) {
-        this.status = data().deepCopy(fields()[7].schema(), other.status);
+      if (isValidValue(fields()[7], other.inceptionDate)) {
+        this.inceptionDate = data().deepCopy(fields()[7].schema(), other.inceptionDate);
         fieldSetFlags()[7] = true;
+      }
+      if (isValidValue(fields()[8], other.status)) {
+        this.status = data().deepCopy(fields()[8].schema(), other.status);
+        fieldSetFlags()[8] = true;
       }
     }
 
@@ -721,7 +754,7 @@ static {
       * Gets the value of the 'ordered_time' field.
       * @return The value.
       */
-    public java.time.LocalDateTime getOrderedTime() {
+    public java.time.Instant getOrderedTime() {
       return ordered_time;
     }
 
@@ -731,9 +764,9 @@ static {
       * @param value The value of 'ordered_time'.
       * @return This builder.
       */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder setOrderedTime(java.time.LocalDateTime value) {
+    public com.learnavro.domain.generated.CoffeeOrder.Builder setOrderedTime(java.time.Instant value) {
       validate(fields()[5], value);
-      this.ordered_time = value;
+      this.ordered_time = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
       fieldSetFlags()[5] = true;
       return this;
     }
@@ -797,6 +830,45 @@ static {
     }
 
     /**
+      * Gets the value of the 'inceptionDate' field.
+      * @return The value.
+      */
+    public java.time.LocalDate getInceptionDate() {
+      return inceptionDate;
+    }
+
+
+    /**
+      * Sets the value of the 'inceptionDate' field.
+      * @param value The value of 'inceptionDate'.
+      * @return This builder.
+      */
+    public com.learnavro.domain.generated.CoffeeOrder.Builder setInceptionDate(java.time.LocalDate value) {
+      validate(fields()[7], value);
+      this.inceptionDate = value;
+      fieldSetFlags()[7] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'inceptionDate' field has been set.
+      * @return True if the 'inceptionDate' field has been set, false otherwise.
+      */
+    public boolean hasInceptionDate() {
+      return fieldSetFlags()[7];
+    }
+
+
+    /**
+      * Clears the value of the 'inceptionDate' field.
+      * @return This builder.
+      */
+    public com.learnavro.domain.generated.CoffeeOrder.Builder clearInceptionDate() {
+      fieldSetFlags()[7] = false;
+      return this;
+    }
+
+    /**
       * Gets the value of the 'status' field.
       * @return The value.
       */
@@ -811,9 +883,9 @@ static {
       * @return This builder.
       */
     public com.learnavro.domain.generated.CoffeeOrder.Builder setStatus(java.lang.String value) {
-      validate(fields()[7], value);
+      validate(fields()[8], value);
       this.status = value;
-      fieldSetFlags()[7] = true;
+      fieldSetFlags()[8] = true;
       return this;
     }
 
@@ -822,7 +894,7 @@ static {
       * @return True if the 'status' field has been set, false otherwise.
       */
     public boolean hasStatus() {
-      return fieldSetFlags()[7];
+      return fieldSetFlags()[8];
     }
 
 
@@ -832,7 +904,7 @@ static {
       */
     public com.learnavro.domain.generated.CoffeeOrder.Builder clearStatus() {
       status = null;
-      fieldSetFlags()[7] = false;
+      fieldSetFlags()[8] = false;
       return this;
     }
 
@@ -864,9 +936,10 @@ static {
           record.store = fieldSetFlags()[3] ? this.store : (com.learnavro.domain.generated.Store) defaultValue(fields()[3]);
         }
         record.orderLineItems = fieldSetFlags()[4] ? this.orderLineItems : (java.util.List<com.learnavro.domain.generated.OrderLineItem>) defaultValue(fields()[4]);
-        record.ordered_time = fieldSetFlags()[5] ? this.ordered_time : (java.time.LocalDateTime) defaultValue(fields()[5]);
+        record.ordered_time = fieldSetFlags()[5] ? this.ordered_time : (java.time.Instant) defaultValue(fields()[5]);
         record.pick_up = fieldSetFlags()[6] ? this.pick_up : (com.learnavro.domain.generated.PickUp) defaultValue(fields()[6]);
-        record.status = fieldSetFlags()[7] ? this.status : (java.lang.String) defaultValue(fields()[7]);
+        record.inceptionDate = fieldSetFlags()[7] ? this.inceptionDate : (java.time.LocalDate) defaultValue(fields()[7]);
+        record.status = fieldSetFlags()[8] ? this.status : (java.lang.String) defaultValue(fields()[8]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;

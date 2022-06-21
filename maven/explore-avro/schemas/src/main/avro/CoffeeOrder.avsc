@@ -38,7 +38,7 @@
       "name": "ordered_time",
       "type": {
         "type": "long",
-        "logicalType": "local-timestamp-millis"
+        "logicalType": "timestamp-millis"
       }
     },
     {
@@ -50,6 +50,13 @@
           "IN_STORE",
           "CURBSIDE"
         ]
+      }
+    },
+    {
+      "name": "inceptionDate",
+      "type": {
+        "type": "int",
+        "logicalType": "date"
       }
     },
     {

@@ -19,6 +19,9 @@ public class CoffeeOrderOld extends org.apache.avro.specific.SpecificRecordBase 
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
+static {
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.DecimalConversion());
+  }
 
   private static final BinaryMessageEncoder<CoffeeOrderOld> ENCODER =
       new BinaryMessageEncoder<CoffeeOrderOld>(MODEL$, SCHEMA$);

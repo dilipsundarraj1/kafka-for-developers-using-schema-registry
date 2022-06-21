@@ -30,9 +30,6 @@ public class GreetingConsumer {
 
         KafkaConsumer<String, byte[]> consumer = new KafkaConsumer<>(props);
 
-        Thread shutdownHook = new Thread(consumer::close);
-        Runtime.getRuntime().addShutdownHook(shutdownHook);
-
         consumer.subscribe(Collections.singletonList(GREETING_TOPIC));
         System.out.println("Consumer Started");
         while(true) {
