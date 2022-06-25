@@ -14,11 +14,16 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Greeting extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3869309659462340716L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Greeting\",\"namespace\":\"com.learnavro\",\"fields\":[{\"name\":\"greeting\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
+  private static final long serialVersionUID = 5005245098722827652L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Greeting\",\"namespace\":\"com.learnavro\",\"fields\":[{\"name\":\"greeting\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"logicalType\":\"uuid\"},{\"name\":\"createdDateTime\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"createdDate\",\"type\":{\"type\":\"int\",\"logicalType\":\"date\"}},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":4,\"scale\":3}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
+static {
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.DateConversion());
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.TimestampMillisConversion());
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.DecimalConversion());
+  }
 
   private static final BinaryMessageEncoder<Greeting> ENCODER =
       new BinaryMessageEncoder<Greeting>(MODEL$, SCHEMA$);
@@ -72,6 +77,10 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
   }
 
   @Deprecated public java.lang.String greeting;
+  @Deprecated public java.lang.String id;
+  @Deprecated public java.time.Instant createdDateTime;
+  @Deprecated public java.time.LocalDate createdDate;
+  @Deprecated public java.math.BigDecimal cost;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -83,9 +92,17 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
   /**
    * All-args constructor.
    * @param greeting The new value for greeting
+   * @param id The new value for id
+   * @param createdDateTime The new value for createdDateTime
+   * @param createdDate The new value for createdDate
+   * @param cost The new value for cost
    */
-  public Greeting(java.lang.String greeting) {
+  public Greeting(java.lang.String greeting, java.lang.String id, java.time.Instant createdDateTime, java.time.LocalDate createdDate, java.math.BigDecimal cost) {
     this.greeting = greeting;
+    this.id = id;
+    this.createdDateTime = createdDateTime.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
+    this.createdDate = createdDate;
+    this.cost = cost;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -94,8 +111,27 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return greeting;
+    case 1: return id;
+    case 2: return createdDateTime;
+    case 3: return createdDate;
+    case 4: return cost;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
+  }
+
+  private static final org.apache.avro.Conversion<?>[] conversions =
+      new org.apache.avro.Conversion<?>[] {
+      null,
+      null,
+      new org.apache.avro.data.TimeConversions.TimestampMillisConversion(),
+      new org.apache.avro.data.TimeConversions.DateConversion(),
+      new org.apache.avro.Conversions.DecimalConversion(),
+      null
+  };
+
+  @Override
+  public org.apache.avro.Conversion<?> getConversion(int field) {
+    return conversions[field];
   }
 
   // Used by DatumReader.  Applications should not call.
@@ -103,6 +139,10 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: greeting = value$ != null ? value$.toString() : null; break;
+    case 1: id = value$ != null ? value$.toString() : null; break;
+    case 2: createdDateTime = (java.time.Instant)value$; break;
+    case 3: createdDate = (java.time.LocalDate)value$; break;
+    case 4: cost = (java.math.BigDecimal)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -122,6 +162,74 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
    */
   public void setGreeting(java.lang.String value) {
     this.greeting = value;
+  }
+
+  /**
+   * Gets the value of the 'id' field.
+   * @return The value of the 'id' field.
+   */
+  public java.lang.String getId() {
+    return id;
+  }
+
+
+  /**
+   * Sets the value of the 'id' field.
+   * @param value the value to set.
+   */
+  public void setId(java.lang.String value) {
+    this.id = value;
+  }
+
+  /**
+   * Gets the value of the 'createdDateTime' field.
+   * @return The value of the 'createdDateTime' field.
+   */
+  public java.time.Instant getCreatedDateTime() {
+    return createdDateTime;
+  }
+
+
+  /**
+   * Sets the value of the 'createdDateTime' field.
+   * @param value the value to set.
+   */
+  public void setCreatedDateTime(java.time.Instant value) {
+    this.createdDateTime = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
+  }
+
+  /**
+   * Gets the value of the 'createdDate' field.
+   * @return The value of the 'createdDate' field.
+   */
+  public java.time.LocalDate getCreatedDate() {
+    return createdDate;
+  }
+
+
+  /**
+   * Sets the value of the 'createdDate' field.
+   * @param value the value to set.
+   */
+  public void setCreatedDate(java.time.LocalDate value) {
+    this.createdDate = value;
+  }
+
+  /**
+   * Gets the value of the 'cost' field.
+   * @return The value of the 'cost' field.
+   */
+  public java.math.BigDecimal getCost() {
+    return cost;
+  }
+
+
+  /**
+   * Sets the value of the 'cost' field.
+   * @param value the value to set.
+   */
+  public void setCost(java.math.BigDecimal value) {
+    this.cost = value;
   }
 
   /**
@@ -166,6 +274,10 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
     implements org.apache.avro.data.RecordBuilder<Greeting> {
 
     private java.lang.String greeting;
+    private java.lang.String id;
+    private java.time.Instant createdDateTime;
+    private java.time.LocalDate createdDate;
+    private java.math.BigDecimal cost;
 
     /** Creates a new Builder */
     private Builder() {
@@ -182,6 +294,22 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
         this.greeting = data().deepCopy(fields()[0].schema(), other.greeting);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
+      if (isValidValue(fields()[1], other.id)) {
+        this.id = data().deepCopy(fields()[1].schema(), other.id);
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+      }
+      if (isValidValue(fields()[2], other.createdDateTime)) {
+        this.createdDateTime = data().deepCopy(fields()[2].schema(), other.createdDateTime);
+        fieldSetFlags()[2] = other.fieldSetFlags()[2];
+      }
+      if (isValidValue(fields()[3], other.createdDate)) {
+        this.createdDate = data().deepCopy(fields()[3].schema(), other.createdDate);
+        fieldSetFlags()[3] = other.fieldSetFlags()[3];
+      }
+      if (isValidValue(fields()[4], other.cost)) {
+        this.cost = data().deepCopy(fields()[4].schema(), other.cost);
+        fieldSetFlags()[4] = other.fieldSetFlags()[4];
+      }
     }
 
     /**
@@ -193,6 +321,22 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
       if (isValidValue(fields()[0], other.greeting)) {
         this.greeting = data().deepCopy(fields()[0].schema(), other.greeting);
         fieldSetFlags()[0] = true;
+      }
+      if (isValidValue(fields()[1], other.id)) {
+        this.id = data().deepCopy(fields()[1].schema(), other.id);
+        fieldSetFlags()[1] = true;
+      }
+      if (isValidValue(fields()[2], other.createdDateTime)) {
+        this.createdDateTime = data().deepCopy(fields()[2].schema(), other.createdDateTime);
+        fieldSetFlags()[2] = true;
+      }
+      if (isValidValue(fields()[3], other.createdDate)) {
+        this.createdDate = data().deepCopy(fields()[3].schema(), other.createdDate);
+        fieldSetFlags()[3] = true;
+      }
+      if (isValidValue(fields()[4], other.cost)) {
+        this.cost = data().deepCopy(fields()[4].schema(), other.cost);
+        fieldSetFlags()[4] = true;
       }
     }
 
@@ -236,12 +380,174 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
       return this;
     }
 
+    /**
+      * Gets the value of the 'id' field.
+      * @return The value.
+      */
+    public java.lang.String getId() {
+      return id;
+    }
+
+
+    /**
+      * Sets the value of the 'id' field.
+      * @param value The value of 'id'.
+      * @return This builder.
+      */
+    public com.learnavro.Greeting.Builder setId(java.lang.String value) {
+      validate(fields()[1], value);
+      this.id = value;
+      fieldSetFlags()[1] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'id' field has been set.
+      * @return True if the 'id' field has been set, false otherwise.
+      */
+    public boolean hasId() {
+      return fieldSetFlags()[1];
+    }
+
+
+    /**
+      * Clears the value of the 'id' field.
+      * @return This builder.
+      */
+    public com.learnavro.Greeting.Builder clearId() {
+      id = null;
+      fieldSetFlags()[1] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'createdDateTime' field.
+      * @return The value.
+      */
+    public java.time.Instant getCreatedDateTime() {
+      return createdDateTime;
+    }
+
+
+    /**
+      * Sets the value of the 'createdDateTime' field.
+      * @param value The value of 'createdDateTime'.
+      * @return This builder.
+      */
+    public com.learnavro.Greeting.Builder setCreatedDateTime(java.time.Instant value) {
+      validate(fields()[2], value);
+      this.createdDateTime = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
+      fieldSetFlags()[2] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'createdDateTime' field has been set.
+      * @return True if the 'createdDateTime' field has been set, false otherwise.
+      */
+    public boolean hasCreatedDateTime() {
+      return fieldSetFlags()[2];
+    }
+
+
+    /**
+      * Clears the value of the 'createdDateTime' field.
+      * @return This builder.
+      */
+    public com.learnavro.Greeting.Builder clearCreatedDateTime() {
+      fieldSetFlags()[2] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'createdDate' field.
+      * @return The value.
+      */
+    public java.time.LocalDate getCreatedDate() {
+      return createdDate;
+    }
+
+
+    /**
+      * Sets the value of the 'createdDate' field.
+      * @param value The value of 'createdDate'.
+      * @return This builder.
+      */
+    public com.learnavro.Greeting.Builder setCreatedDate(java.time.LocalDate value) {
+      validate(fields()[3], value);
+      this.createdDate = value;
+      fieldSetFlags()[3] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'createdDate' field has been set.
+      * @return True if the 'createdDate' field has been set, false otherwise.
+      */
+    public boolean hasCreatedDate() {
+      return fieldSetFlags()[3];
+    }
+
+
+    /**
+      * Clears the value of the 'createdDate' field.
+      * @return This builder.
+      */
+    public com.learnavro.Greeting.Builder clearCreatedDate() {
+      fieldSetFlags()[3] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'cost' field.
+      * @return The value.
+      */
+    public java.math.BigDecimal getCost() {
+      return cost;
+    }
+
+
+    /**
+      * Sets the value of the 'cost' field.
+      * @param value The value of 'cost'.
+      * @return This builder.
+      */
+    public com.learnavro.Greeting.Builder setCost(java.math.BigDecimal value) {
+      validate(fields()[4], value);
+      this.cost = value;
+      fieldSetFlags()[4] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'cost' field has been set.
+      * @return True if the 'cost' field has been set, false otherwise.
+      */
+    public boolean hasCost() {
+      return fieldSetFlags()[4];
+    }
+
+
+    /**
+      * Clears the value of the 'cost' field.
+      * @return This builder.
+      */
+    public com.learnavro.Greeting.Builder clearCost() {
+      cost = null;
+      fieldSetFlags()[4] = false;
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public Greeting build() {
       try {
         Greeting record = new Greeting();
         record.greeting = fieldSetFlags()[0] ? this.greeting : (java.lang.String) defaultValue(fields()[0]);
+        record.id = fieldSetFlags()[1] ? this.id : (java.lang.String) defaultValue(fields()[1]);
+        record.createdDateTime = fieldSetFlags()[2] ? this.createdDateTime : (java.time.Instant) defaultValue(fields()[2]);
+        record.createdDate = fieldSetFlags()[3] ? this.createdDate : (java.time.LocalDate) defaultValue(fields()[3]);
+        record.cost = fieldSetFlags()[4] ? this.cost : (java.math.BigDecimal) defaultValue(fields()[4]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -269,35 +575,6 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
-  @Override protected boolean hasCustomCoders() { return true; }
-
-  @Override public void customEncode(org.apache.avro.io.Encoder out)
-    throws java.io.IOException
-  {
-    out.writeString(this.greeting);
-
-  }
-
-  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
-    throws java.io.IOException
-  {
-    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
-    if (fieldOrder == null) {
-      this.greeting = in.readString();
-
-    } else {
-      for (int i = 0; i < 1; i++) {
-        switch (fieldOrder[i].pos()) {
-        case 0:
-          this.greeting = in.readString();
-          break;
-
-        default:
-          throw new java.io.IOException("Corrupt ResolvingDecoder.");
-        }
-      }
-    }
-  }
 }
 
 

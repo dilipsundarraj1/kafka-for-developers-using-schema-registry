@@ -53,13 +53,6 @@
       }
     },
     {
-      "name": "inceptionDate",
-      "type": {
-        "type": "int",
-        "logicalType": "date"
-      }
-    },
-    {
       "name": "status",
       "type": "string",
       "default": "NEW"

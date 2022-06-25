@@ -6,6 +6,34 @@
     {
       "name": "greeting",
       "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "logicalType": "uuid"
+    },
+    {
+      "name": "createdDateTime",
+      "type":{
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "createdDate",
+      "type":{
+        "type": "int",
+        "logicalType": "date"
+      }
+    },
+    {
+      "name": "cost",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 4, //3.999
+        "scale": 3 // //3.999
+      }
     }
-  ]
+    ]
 }
