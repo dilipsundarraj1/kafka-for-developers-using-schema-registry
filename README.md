@@ -100,3 +100,19 @@ docker exec -it schema-registry bash
 ```
 kafka-avro-console-consumer --bootstrap-server broker:29092 --topic greetings --from-beginning
 ```
+
+## Kafka Helpful Commands
+
+- To view the list of topics in the Kafka environment.
+
+```
+kafka-topics --bootstrap-server localhost:9092 --describe
+```
+
+- **Note :** Schemas are stored in an internal topic named *_schemas**
+
+- Lets view the configuration set up for **_schemas** topics   
+
+```
+kafka-topics --bootstrap-server localhost:9092 --describe --topic _schemas
+```
