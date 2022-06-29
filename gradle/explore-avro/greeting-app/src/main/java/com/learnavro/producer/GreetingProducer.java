@@ -20,7 +20,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class GreetingProducer {
-    private static final Logger log = LoggerFactory.getLogger(GreetingConsumer.class);
+    private static final Logger log = LoggerFactory.getLogger(GreetingProducer.class);
     private static final String GREETING_TOPIC = "greeting";
 
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {

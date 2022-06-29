@@ -9,13 +9,10 @@
         </layout>
     </appender>
 
-    <logger name="com.learnavro" level="info">
+    <logger name="com.learnkafka" level="info">
         <appender-ref ref="CONSOLE"/>
     </logger>
 
-    <!--for kafka heartbeat logs-->
-    <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
-    </root>
+
 
 </configuration>
