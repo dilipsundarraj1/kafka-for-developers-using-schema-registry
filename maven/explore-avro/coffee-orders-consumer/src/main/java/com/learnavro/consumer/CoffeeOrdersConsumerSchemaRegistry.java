@@ -11,14 +11,13 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
 
 public class CoffeeOrdersConsumerSchemaRegistry {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CoffeeOrdersConsumerSchemaRegistry.class);
+    private static final Logger log = LoggerFactory.getLogger(CoffeeOrdersConsumerSchemaRegistry.class);
     private static final String COFFEE_ORDERS_TOPIC = "coffee-orders-sr";
 
     public static void main(String[] args) {
@@ -36,7 +35,7 @@ public class CoffeeOrdersConsumerSchemaRegistry {
         //KafkaConsumer<OrderId, CoffeeOrder> consumer = new KafkaConsumer<>(props);
 
         consumer.subscribe(Collections.singletonList(COFFEE_ORDERS_TOPIC));
-        System.out.println("Consumer Started");
+        log.info("Consumer Started");
         while(true) {
            // ConsumerRecords<String, GenericRecord> records = consumer.poll(Duration.ofMillis(100));
             ConsumerRecords<OrderId, GenericRecord> records = consumer.poll(Duration.ofMillis(100));
@@ -48,7 +47,7 @@ public class CoffeeOrdersConsumerSchemaRegistry {
             //for(ConsumerRecord<OrderId, CoffeeOrder> record : records) {
                 GenericRecord coffeeOrder =record.value();
             //    CoffeeOrder coffeeOrder =record.value();
-                System.out.println("Consumed message: \n" + record.key() + " : " + coffeeOrder.toString());
+                log.info("Consumed message: " + record.key() + " : " + coffeeOrder.toString());
             }
 
         }

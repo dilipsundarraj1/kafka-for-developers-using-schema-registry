@@ -8,6 +8,8 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -16,6 +18,7 @@ import java.util.concurrent.ExecutionException;
 import static com.learnavro.util.CoffeeOrderUtil.buildNewCoffeeOrder;
 
 public class CoffeeOrderProducerSchemaRegistry {
+    private static final Logger log = LoggerFactory.getLogger(CoffeeOrderProducerSchemaRegistry.class);
 
     private static final String COFFEE_ORDERS_TOPIC = "coffee-orders-sr";
 
@@ -33,14 +36,14 @@ public class CoffeeOrderProducerSchemaRegistry {
         KafkaProducer<OrderId, CoffeeOrder> producer = new KafkaProducer<>(props);
 
         CoffeeOrder coffeeOrder = buildNewCoffeeOrder();
-        System.out.println("Coffee Order Sent " + coffeeOrder);
+        log.info("Coffee Order to be Sent : {} " ,  coffeeOrder);
 
 //        byte[] value = coffeeOrder.toByteBuffer().array();
 
         //ProducerRecord<String, CoffeeOrder> producerRecord = new ProducerRecord<>(COFFEE_ORDERS_TOPIC, coffeeOrder);
         ProducerRecord<OrderId, CoffeeOrder> producerRecord = new ProducerRecord<>(COFFEE_ORDERS_TOPIC,coffeeOrder.getId(), coffeeOrder);
         var recordMetaData = producer.send(producerRecord).get();
-        System.out.println("recordMetaData : " + recordMetaData);
+        log.info("recordMetaData : {}  ",  recordMetaData);
 
     }
 

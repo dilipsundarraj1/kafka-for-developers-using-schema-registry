@@ -1,7 +1,10 @@
 import com.github.davidmc24.gradle.plugin.avro.GenerateAvroJavaTask
 
 plugins {
-    id 'java'
+    //id 'java'
+    // These are needed for library publish
+    id 'java-library'
+    id 'maven-publish'
     //id "com.github.davidmc24.gradle.plugin.avro" version "1.0.0"
     id "com.github.davidmc24.gradle.plugin.avro-base" version "1.0.0"
 }
@@ -11,7 +14,7 @@ ext {
 }
 
 group 'com.learnavro'
-version 'unspecified'
+version '1.0'
 
 
 repositories {
@@ -34,6 +37,14 @@ def generateAvro = tasks.register("generateAvro", GenerateAvroJavaTask) {
 
 tasks.named("compileJava").configure {
     source(generateAvro)
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
 }
 
 
