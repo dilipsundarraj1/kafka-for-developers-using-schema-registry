@@ -19,7 +19,7 @@ public class CoffeeOrderUtil {
                 .setId(orderId)
                 .setName("Dilip Sundarraj")
                 //.setFullName("Dilip Sundarraj")
-                .setStore(generateStore())
+                //.setStore(generateStore())
                 .setOrderLineItems(generateOrderLineItems())
                 .setOrderedTime(Instant.now())
                .setPickUp(PickUp.IN_STORE)
@@ -28,17 +28,17 @@ public class CoffeeOrderUtil {
 
     }
 
-    public static CoffeeOrderOld buildNewCoffeeOrderV2(){
-
-        return CoffeeOrderOld.newBuilder()
-                .setId(randomId())
-                .setName("Chicago 1234")
-                .setStore(generateStore())
-                .setOrderLineItems(generateOrderLineItems())
-                .build();
-
-
-    }
+//    public static CoffeeOrderOld buildNewCoffeeOrderV2(){
+//
+//        return CoffeeOrderOld.newBuilder()
+//                .setId(randomId())
+//                .setName("Chicago 1234")
+//                .setStore(generateStore())
+//                .setOrderLineItems(generateOrderLineItems())
+//                .build();
+//
+//
+//    }
 
     private static List<OrderLineItem> generateOrderLineItems() {
 

@@ -11,15 +11,15 @@
       "name": "name",
       "type": "string"
     },
-    //    {
-    //      "name": "full_name",
-    //      "type": "string"
-    //    },
-    {
-      "name": "nickName",
-      "type": "string",
-      "default": ""
-    },
+//        {
+//          "name": "full_name",
+//          "type": "string"
+//        },
+//    {
+//      "name": "nickName",
+//      "type": "string",
+//      "default": ""
+//    },
 //    {
 //      "name": "store",
 //      "type": "Store"

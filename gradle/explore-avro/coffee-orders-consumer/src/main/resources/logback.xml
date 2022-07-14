@@ -9,9 +9,13 @@
         </layout>
     </appender>
 
-    <logger name="com.learnavro" level="info">
+<!--    <logger name="com.learnavro" level="debug">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--    </logger>-->
+
+    <root level="INFO">
         <appender-ref ref="CONSOLE"/>
-    </logger>
+    </root>
 
 
 
