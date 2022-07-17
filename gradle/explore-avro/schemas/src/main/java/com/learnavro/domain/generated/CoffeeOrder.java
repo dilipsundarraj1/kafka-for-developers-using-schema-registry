@@ -14,13 +14,12 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 1848830363744260846L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"record\",\"name\":\"OrderId\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":2}}]}}},{\"name\":\"ordered_time\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"pick_up\",\"type\":{\"type\":\"enum\",\"name\":\"PickUp\",\"symbols\":[\"IN_STORE\",\"CURBSIDE\"]}},{\"name\":\"status\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"NEW\"}]}");
+  private static final long serialVersionUID = -7702509105332806328L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"record\",\"name\":\"OrderId\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":2}}]}}},{\"name\":\"status\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"NEW\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 static {
-    MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.TimestampMillisConversion());
     MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.DecimalConversion());
   }
 
@@ -76,10 +75,7 @@ static {
   }
 
   @Deprecated public com.learnavro.domain.generated.OrderId id;
-  @Deprecated public java.lang.String name;
   @Deprecated public java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems;
-  @Deprecated public java.time.Instant ordered_time;
-  @Deprecated public com.learnavro.domain.generated.PickUp pick_up;
   @Deprecated public java.lang.String status;
 
   /**
@@ -92,18 +88,12 @@ static {
   /**
    * All-args constructor.
    * @param id The new value for id
-   * @param name The new value for name
    * @param orderLineItems The new value for orderLineItems
-   * @param ordered_time The new value for ordered_time
-   * @param pick_up The new value for pick_up
    * @param status The new value for status
    */
-  public CoffeeOrder(com.learnavro.domain.generated.OrderId id, java.lang.String name, java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems, java.time.Instant ordered_time, com.learnavro.domain.generated.PickUp pick_up, java.lang.String status) {
+  public CoffeeOrder(com.learnavro.domain.generated.OrderId id, java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems, java.lang.String status) {
     this.id = id;
-    this.name = name;
     this.orderLineItems = orderLineItems;
-    this.ordered_time = ordered_time.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
-    this.pick_up = pick_up;
     this.status = status;
   }
 
@@ -113,29 +103,10 @@ static {
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return id;
-    case 1: return name;
-    case 2: return orderLineItems;
-    case 3: return ordered_time;
-    case 4: return pick_up;
-    case 5: return status;
+    case 1: return orderLineItems;
+    case 2: return status;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
-  }
-
-  private static final org.apache.avro.Conversion<?>[] conversions =
-      new org.apache.avro.Conversion<?>[] {
-      null,
-      null,
-      null,
-      new org.apache.avro.data.TimeConversions.TimestampMillisConversion(),
-      null,
-      null,
-      null
-  };
-
-  @Override
-  public org.apache.avro.Conversion<?> getConversion(int field) {
-    return conversions[field];
   }
 
   // Used by DatumReader.  Applications should not call.
@@ -143,11 +114,8 @@ static {
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: id = (com.learnavro.domain.generated.OrderId)value$; break;
-    case 1: name = value$ != null ? value$.toString() : null; break;
-    case 2: orderLineItems = (java.util.List<com.learnavro.domain.generated.OrderLineItem>)value$; break;
-    case 3: ordered_time = (java.time.Instant)value$; break;
-    case 4: pick_up = (com.learnavro.domain.generated.PickUp)value$; break;
-    case 5: status = value$ != null ? value$.toString() : null; break;
+    case 1: orderLineItems = (java.util.List<com.learnavro.domain.generated.OrderLineItem>)value$; break;
+    case 2: status = value$ != null ? value$.toString() : null; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -170,23 +138,6 @@ static {
   }
 
   /**
-   * Gets the value of the 'name' field.
-   * @return The value of the 'name' field.
-   */
-  public java.lang.String getName() {
-    return name;
-  }
-
-
-  /**
-   * Sets the value of the 'name' field.
-   * @param value the value to set.
-   */
-  public void setName(java.lang.String value) {
-    this.name = value;
-  }
-
-  /**
    * Gets the value of the 'orderLineItems' field.
    * @return The value of the 'orderLineItems' field.
    */
@@ -201,40 +152,6 @@ static {
    */
   public void setOrderLineItems(java.util.List<com.learnavro.domain.generated.OrderLineItem> value) {
     this.orderLineItems = value;
-  }
-
-  /**
-   * Gets the value of the 'ordered_time' field.
-   * @return The value of the 'ordered_time' field.
-   */
-  public java.time.Instant getOrderedTime() {
-    return ordered_time;
-  }
-
-
-  /**
-   * Sets the value of the 'ordered_time' field.
-   * @param value the value to set.
-   */
-  public void setOrderedTime(java.time.Instant value) {
-    this.ordered_time = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
-  }
-
-  /**
-   * Gets the value of the 'pick_up' field.
-   * @return The value of the 'pick_up' field.
-   */
-  public com.learnavro.domain.generated.PickUp getPickUp() {
-    return pick_up;
-  }
-
-
-  /**
-   * Sets the value of the 'pick_up' field.
-   * @param value the value to set.
-   */
-  public void setPickUp(com.learnavro.domain.generated.PickUp value) {
-    this.pick_up = value;
   }
 
   /**
@@ -297,10 +214,7 @@ static {
 
     private com.learnavro.domain.generated.OrderId id;
     private com.learnavro.domain.generated.OrderId.Builder idBuilder;
-    private java.lang.String name;
     private java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems;
-    private java.time.Instant ordered_time;
-    private com.learnavro.domain.generated.PickUp pick_up;
     private java.lang.String status;
 
     /** Creates a new Builder */
@@ -321,25 +235,13 @@ static {
       if (other.hasIdBuilder()) {
         this.idBuilder = com.learnavro.domain.generated.OrderId.newBuilder(other.getIdBuilder());
       }
-      if (isValidValue(fields()[1], other.name)) {
-        this.name = data().deepCopy(fields()[1].schema(), other.name);
+      if (isValidValue(fields()[1], other.orderLineItems)) {
+        this.orderLineItems = data().deepCopy(fields()[1].schema(), other.orderLineItems);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.orderLineItems)) {
-        this.orderLineItems = data().deepCopy(fields()[2].schema(), other.orderLineItems);
+      if (isValidValue(fields()[2], other.status)) {
+        this.status = data().deepCopy(fields()[2].schema(), other.status);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
-      }
-      if (isValidValue(fields()[3], other.ordered_time)) {
-        this.ordered_time = data().deepCopy(fields()[3].schema(), other.ordered_time);
-        fieldSetFlags()[3] = other.fieldSetFlags()[3];
-      }
-      if (isValidValue(fields()[4], other.pick_up)) {
-        this.pick_up = data().deepCopy(fields()[4].schema(), other.pick_up);
-        fieldSetFlags()[4] = other.fieldSetFlags()[4];
-      }
-      if (isValidValue(fields()[5], other.status)) {
-        this.status = data().deepCopy(fields()[5].schema(), other.status);
-        fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
     }
 
@@ -354,25 +256,13 @@ static {
         fieldSetFlags()[0] = true;
       }
       this.idBuilder = null;
-      if (isValidValue(fields()[1], other.name)) {
-        this.name = data().deepCopy(fields()[1].schema(), other.name);
+      if (isValidValue(fields()[1], other.orderLineItems)) {
+        this.orderLineItems = data().deepCopy(fields()[1].schema(), other.orderLineItems);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.orderLineItems)) {
-        this.orderLineItems = data().deepCopy(fields()[2].schema(), other.orderLineItems);
+      if (isValidValue(fields()[2], other.status)) {
+        this.status = data().deepCopy(fields()[2].schema(), other.status);
         fieldSetFlags()[2] = true;
-      }
-      if (isValidValue(fields()[3], other.ordered_time)) {
-        this.ordered_time = data().deepCopy(fields()[3].schema(), other.ordered_time);
-        fieldSetFlags()[3] = true;
-      }
-      if (isValidValue(fields()[4], other.pick_up)) {
-        this.pick_up = data().deepCopy(fields()[4].schema(), other.pick_up);
-        fieldSetFlags()[4] = true;
-      }
-      if (isValidValue(fields()[5], other.status)) {
-        this.status = data().deepCopy(fields()[5].schema(), other.status);
-        fieldSetFlags()[5] = true;
       }
     }
 
@@ -453,46 +343,6 @@ static {
     }
 
     /**
-      * Gets the value of the 'name' field.
-      * @return The value.
-      */
-    public java.lang.String getName() {
-      return name;
-    }
-
-
-    /**
-      * Sets the value of the 'name' field.
-      * @param value The value of 'name'.
-      * @return This builder.
-      */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder setName(java.lang.String value) {
-      validate(fields()[1], value);
-      this.name = value;
-      fieldSetFlags()[1] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'name' field has been set.
-      * @return True if the 'name' field has been set, false otherwise.
-      */
-    public boolean hasName() {
-      return fieldSetFlags()[1];
-    }
-
-
-    /**
-      * Clears the value of the 'name' field.
-      * @return This builder.
-      */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder clearName() {
-      name = null;
-      fieldSetFlags()[1] = false;
-      return this;
-    }
-
-    /**
       * Gets the value of the 'orderLineItems' field.
       * @return The value.
       */
@@ -507,9 +357,9 @@ static {
       * @return This builder.
       */
     public com.learnavro.domain.generated.CoffeeOrder.Builder setOrderLineItems(java.util.List<com.learnavro.domain.generated.OrderLineItem> value) {
-      validate(fields()[2], value);
+      validate(fields()[1], value);
       this.orderLineItems = value;
-      fieldSetFlags()[2] = true;
+      fieldSetFlags()[1] = true;
       return this;
     }
 
@@ -518,7 +368,7 @@ static {
       * @return True if the 'orderLineItems' field has been set, false otherwise.
       */
     public boolean hasOrderLineItems() {
-      return fieldSetFlags()[2];
+      return fieldSetFlags()[1];
     }
 
 
@@ -528,86 +378,7 @@ static {
       */
     public com.learnavro.domain.generated.CoffeeOrder.Builder clearOrderLineItems() {
       orderLineItems = null;
-      fieldSetFlags()[2] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'ordered_time' field.
-      * @return The value.
-      */
-    public java.time.Instant getOrderedTime() {
-      return ordered_time;
-    }
-
-
-    /**
-      * Sets the value of the 'ordered_time' field.
-      * @param value The value of 'ordered_time'.
-      * @return This builder.
-      */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder setOrderedTime(java.time.Instant value) {
-      validate(fields()[3], value);
-      this.ordered_time = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
-      fieldSetFlags()[3] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'ordered_time' field has been set.
-      * @return True if the 'ordered_time' field has been set, false otherwise.
-      */
-    public boolean hasOrderedTime() {
-      return fieldSetFlags()[3];
-    }
-
-
-    /**
-      * Clears the value of the 'ordered_time' field.
-      * @return This builder.
-      */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder clearOrderedTime() {
-      fieldSetFlags()[3] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'pick_up' field.
-      * @return The value.
-      */
-    public com.learnavro.domain.generated.PickUp getPickUp() {
-      return pick_up;
-    }
-
-
-    /**
-      * Sets the value of the 'pick_up' field.
-      * @param value The value of 'pick_up'.
-      * @return This builder.
-      */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder setPickUp(com.learnavro.domain.generated.PickUp value) {
-      validate(fields()[4], value);
-      this.pick_up = value;
-      fieldSetFlags()[4] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'pick_up' field has been set.
-      * @return True if the 'pick_up' field has been set, false otherwise.
-      */
-    public boolean hasPickUp() {
-      return fieldSetFlags()[4];
-    }
-
-
-    /**
-      * Clears the value of the 'pick_up' field.
-      * @return This builder.
-      */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder clearPickUp() {
-      pick_up = null;
-      fieldSetFlags()[4] = false;
+      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -626,9 +397,9 @@ static {
       * @return This builder.
       */
     public com.learnavro.domain.generated.CoffeeOrder.Builder setStatus(java.lang.String value) {
-      validate(fields()[5], value);
+      validate(fields()[2], value);
       this.status = value;
-      fieldSetFlags()[5] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -637,7 +408,7 @@ static {
       * @return True if the 'status' field has been set, false otherwise.
       */
     public boolean hasStatus() {
-      return fieldSetFlags()[5];
+      return fieldSetFlags()[2];
     }
 
 
@@ -647,7 +418,7 @@ static {
       */
     public com.learnavro.domain.generated.CoffeeOrder.Builder clearStatus() {
       status = null;
-      fieldSetFlags()[5] = false;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
@@ -666,11 +437,8 @@ static {
         } else {
           record.id = fieldSetFlags()[0] ? this.id : (com.learnavro.domain.generated.OrderId) defaultValue(fields()[0]);
         }
-        record.name = fieldSetFlags()[1] ? this.name : (java.lang.String) defaultValue(fields()[1]);
-        record.orderLineItems = fieldSetFlags()[2] ? this.orderLineItems : (java.util.List<com.learnavro.domain.generated.OrderLineItem>) defaultValue(fields()[2]);
-        record.ordered_time = fieldSetFlags()[3] ? this.ordered_time : (java.time.Instant) defaultValue(fields()[3]);
-        record.pick_up = fieldSetFlags()[4] ? this.pick_up : (com.learnavro.domain.generated.PickUp) defaultValue(fields()[4]);
-        record.status = fieldSetFlags()[5] ? this.status : (java.lang.String) defaultValue(fields()[5]);
+        record.orderLineItems = fieldSetFlags()[1] ? this.orderLineItems : (java.util.List<com.learnavro.domain.generated.OrderLineItem>) defaultValue(fields()[1]);
+        record.status = fieldSetFlags()[2] ? this.status : (java.lang.String) defaultValue(fields()[2]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;

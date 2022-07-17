@@ -19,10 +19,10 @@ public class CoffeeOrderUtil {
                 .setId(orderId)
                 .setName("Dilip Sundarraj")
                 //.setFullName("Dilip Sundarraj")
-                //.setStore(generateStore())
+                .setStore(generateStore())
                 .setOrderLineItems(generateOrderLineItems())
                 .setOrderedTime(Instant.now())
-               .setPickUp(PickUp.IN_STORE)
+                // .setPickUp(PickUp.IN_STORE)
                 .build();
 
 
