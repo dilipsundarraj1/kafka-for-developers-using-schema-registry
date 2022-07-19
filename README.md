@@ -171,3 +171,22 @@ Let's follow the steps given in this section :
     1) Publish the record with **4.0** and the consumer should process the records successfully.
 8) Upgrade the producer's **schemas** module version 3.0
     2) Publish the record with **3.0** and the consumer should process the records successfully.
+
+## NONE Compatibility
+1) Rename the field from **name** to **full_name**
+2) Build 5.0 and publish the new version of AVRO classes
+    1) Change the version in schemas module to **5.0**
+    2) gradle
+        1) Execute clean gradle task
+        2) Execute the **generateAvro** gradle task
+        3) Execute **publishToMavenLocal** gradle task
+    3) maven
+        1) Execute clean task
+        2) Execute **install**  task
+3) Update the producer to use **schemas** module new version **5.0** and the update the consumer to **5.0**  
+4) Start the consumer and publish the message
+   1) Error is observed, update the compatibility level to **NONE**
+5) Publish the message and the message will be published successfully
+6) Consumer should read the message successfully
+7) Now lets revert the producer version to **4.0** and then publish the message
+8) Consumer will observer an error with the missing field **full_name**

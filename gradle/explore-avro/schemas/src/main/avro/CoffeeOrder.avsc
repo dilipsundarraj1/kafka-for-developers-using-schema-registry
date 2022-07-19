@@ -8,7 +8,7 @@
       "type": "OrderId"
     },
     {
-      "name": "name",
+      "name": "full_name",
       "type": "string"
     },
 //        {

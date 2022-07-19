@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -735474296123259975L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"record\",\"name\":\"OrderId\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nickName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Optional field represents the nick name for the user\",\"default\":\"\"},{\"name\":\"store\",\"type\":{\"type\":\"record\",\"name\":\"Store\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"fields\":[{\"name\":\"addressLine1\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"city\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"state_province\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"country\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"USA\"},{\"name\":\"zip\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":2}}]}}},{\"name\":\"ordered_time\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"pick_up\",\"type\":{\"type\":\"enum\",\"name\":\"PickUp\",\"symbols\":[\"IN_STORE\",\"CURBSIDE\"]}},{\"name\":\"status\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"NEW\"}]}");
+  private static final long serialVersionUID = 2233898893241306527L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"record\",\"name\":\"OrderId\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"full_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nickName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Optional field represents the nick name for the user\",\"default\":\"\"},{\"name\":\"store\",\"type\":{\"type\":\"record\",\"name\":\"Store\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"fields\":[{\"name\":\"addressLine1\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"city\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"state_province\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"country\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"USA\"},{\"name\":\"zip\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":2}}]}}},{\"name\":\"ordered_time\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"pick_up\",\"type\":{\"type\":\"enum\",\"name\":\"PickUp\",\"symbols\":[\"IN_STORE\",\"CURBSIDE\"]}},{\"name\":\"status\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"NEW\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -76,7 +76,7 @@ static {
   }
 
   @Deprecated public com.learnavro.domain.generated.OrderId id;
-  @Deprecated public java.lang.String name;
+  @Deprecated public java.lang.String full_name;
   /** Optional field represents the nick name for the user */
   @Deprecated public java.lang.String nickName;
   @Deprecated public com.learnavro.domain.generated.Store store;
@@ -95,7 +95,7 @@ static {
   /**
    * All-args constructor.
    * @param id The new value for id
-   * @param name The new value for name
+   * @param full_name The new value for full_name
    * @param nickName Optional field represents the nick name for the user
    * @param store The new value for store
    * @param orderLineItems The new value for orderLineItems
@@ -103,9 +103,9 @@ static {
    * @param pick_up The new value for pick_up
    * @param status The new value for status
    */
-  public CoffeeOrder(com.learnavro.domain.generated.OrderId id, java.lang.String name, java.lang.String nickName, com.learnavro.domain.generated.Store store, java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems, java.time.Instant ordered_time, com.learnavro.domain.generated.PickUp pick_up, java.lang.String status) {
+  public CoffeeOrder(com.learnavro.domain.generated.OrderId id, java.lang.String full_name, java.lang.String nickName, com.learnavro.domain.generated.Store store, java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems, java.time.Instant ordered_time, com.learnavro.domain.generated.PickUp pick_up, java.lang.String status) {
     this.id = id;
-    this.name = name;
+    this.full_name = full_name;
     this.nickName = nickName;
     this.store = store;
     this.orderLineItems = orderLineItems;
@@ -120,7 +120,7 @@ static {
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return id;
-    case 1: return name;
+    case 1: return full_name;
     case 2: return nickName;
     case 3: return store;
     case 4: return orderLineItems;
@@ -154,7 +154,7 @@ static {
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: id = (com.learnavro.domain.generated.OrderId)value$; break;
-    case 1: name = value$ != null ? value$.toString() : null; break;
+    case 1: full_name = value$ != null ? value$.toString() : null; break;
     case 2: nickName = value$ != null ? value$.toString() : null; break;
     case 3: store = (com.learnavro.domain.generated.Store)value$; break;
     case 4: orderLineItems = (java.util.List<com.learnavro.domain.generated.OrderLineItem>)value$; break;
@@ -183,20 +183,20 @@ static {
   }
 
   /**
-   * Gets the value of the 'name' field.
-   * @return The value of the 'name' field.
+   * Gets the value of the 'full_name' field.
+   * @return The value of the 'full_name' field.
    */
-  public java.lang.String getName() {
-    return name;
+  public java.lang.String getFullName() {
+    return full_name;
   }
 
 
   /**
-   * Sets the value of the 'name' field.
+   * Sets the value of the 'full_name' field.
    * @param value the value to set.
    */
-  public void setName(java.lang.String value) {
-    this.name = value;
+  public void setFullName(java.lang.String value) {
+    this.full_name = value;
   }
 
   /**
@@ -345,7 +345,7 @@ static {
 
     private com.learnavro.domain.generated.OrderId id;
     private com.learnavro.domain.generated.OrderId.Builder idBuilder;
-    private java.lang.String name;
+    private java.lang.String full_name;
     /** Optional field represents the nick name for the user */
     private java.lang.String nickName;
     private com.learnavro.domain.generated.Store store;
@@ -373,8 +373,8 @@ static {
       if (other.hasIdBuilder()) {
         this.idBuilder = com.learnavro.domain.generated.OrderId.newBuilder(other.getIdBuilder());
       }
-      if (isValidValue(fields()[1], other.name)) {
-        this.name = data().deepCopy(fields()[1].schema(), other.name);
+      if (isValidValue(fields()[1], other.full_name)) {
+        this.full_name = data().deepCopy(fields()[1].schema(), other.full_name);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
       if (isValidValue(fields()[2], other.nickName)) {
@@ -417,8 +417,8 @@ static {
         fieldSetFlags()[0] = true;
       }
       this.idBuilder = null;
-      if (isValidValue(fields()[1], other.name)) {
-        this.name = data().deepCopy(fields()[1].schema(), other.name);
+      if (isValidValue(fields()[1], other.full_name)) {
+        this.full_name = data().deepCopy(fields()[1].schema(), other.full_name);
         fieldSetFlags()[1] = true;
       }
       if (isValidValue(fields()[2], other.nickName)) {
@@ -525,41 +525,41 @@ static {
     }
 
     /**
-      * Gets the value of the 'name' field.
+      * Gets the value of the 'full_name' field.
       * @return The value.
       */
-    public java.lang.String getName() {
-      return name;
+    public java.lang.String getFullName() {
+      return full_name;
     }
 
 
     /**
-      * Sets the value of the 'name' field.
-      * @param value The value of 'name'.
+      * Sets the value of the 'full_name' field.
+      * @param value The value of 'full_name'.
       * @return This builder.
       */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder setName(java.lang.String value) {
+    public com.learnavro.domain.generated.CoffeeOrder.Builder setFullName(java.lang.String value) {
       validate(fields()[1], value);
-      this.name = value;
+      this.full_name = value;
       fieldSetFlags()[1] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'name' field has been set.
-      * @return True if the 'name' field has been set, false otherwise.
+      * Checks whether the 'full_name' field has been set.
+      * @return True if the 'full_name' field has been set, false otherwise.
       */
-    public boolean hasName() {
+    public boolean hasFullName() {
       return fieldSetFlags()[1];
     }
 
 
     /**
-      * Clears the value of the 'name' field.
+      * Clears the value of the 'full_name' field.
       * @return This builder.
       */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder clearName() {
-      name = null;
+    public com.learnavro.domain.generated.CoffeeOrder.Builder clearFullName() {
+      full_name = null;
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -858,7 +858,7 @@ static {
         } else {
           record.id = fieldSetFlags()[0] ? this.id : (com.learnavro.domain.generated.OrderId) defaultValue(fields()[0]);
         }
-        record.name = fieldSetFlags()[1] ? this.name : (java.lang.String) defaultValue(fields()[1]);
+        record.full_name = fieldSetFlags()[1] ? this.full_name : (java.lang.String) defaultValue(fields()[1]);
         record.nickName = fieldSetFlags()[2] ? this.nickName : (java.lang.String) defaultValue(fields()[2]);
         if (storeBuilder != null) {
           try {

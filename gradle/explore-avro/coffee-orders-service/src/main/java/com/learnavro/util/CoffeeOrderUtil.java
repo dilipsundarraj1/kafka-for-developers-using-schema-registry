@@ -17,7 +17,7 @@ public class CoffeeOrderUtil {
 
         return CoffeeOrder.newBuilder()
                 .setId(orderId)
-                .setName("Dilip Sundarraj")
+               .setName("Dilip Sundarraj")
                 //.setNickName("DS")
                 //.setFullName("Dilip Sundarraj")
                 .setStore(generateStore())
