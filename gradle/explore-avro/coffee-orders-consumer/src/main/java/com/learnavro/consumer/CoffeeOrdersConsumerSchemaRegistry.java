@@ -1,5 +1,6 @@
 package com.learnavro.consumer;
 
+import com.learnavro.deserialization.CustomAvroDeserializer;
 import com.learnavro.domain.generated.CoffeeOrder;
 import com.learnavro.domain.generated.OrderId;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
@@ -25,8 +26,6 @@ public class CoffeeOrdersConsumerSchemaRegistry {
 
     private static final Logger log = LoggerFactory.getLogger(CoffeeOrdersConsumerSchemaRegistry.class);
     private static final String COFFEE_ORDERS_TOPIC = "coffee-orders-sr";
-    static  final Pattern offsetPattern = Pattern.compile("\\w*offset*\\w[ ]\\d+");
-    static final Pattern partitionPattern = Pattern.compile("\\w*" + COFFEE_ORDERS_TOPIC + "*\\w[-]\\d+");
 
     public static void main(String[] args) throws IOException {
         Properties props = new Properties();
@@ -34,7 +33,7 @@ public class CoffeeOrdersConsumerSchemaRegistry {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "coffee.consumer7");
         //props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class.getName());
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class.getName());
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, CustomAvroDeserializer.class.getName());
         props.put(KafkaAvroDeserializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
         props.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
@@ -60,29 +59,11 @@ public class CoffeeOrdersConsumerSchemaRegistry {
                     log.info("Consumed message: \n" + record.key() + " : " + coffeeOrder.toString());
                 }
             }
-            catch (SerializationException e) {
-                log.error("SerializationException is : {} ", e.getMessage(), e);
-                String text = e.getMessage();
-                Matcher mPart = partitionPattern.matcher(text);
-                Matcher mOff = offsetPattern.matcher(text);
-                mPart.find();
-                Integer partition = Integer.parseInt(mPart.group().replace(COFFEE_ORDERS_TOPIC + "-", ""));
-                mOff.find();
-                Long offset = Long.parseLong(mOff.group().replace("offset ", ""));
-                consumer.seek(new TopicPartition(COFFEE_ORDERS_TOPIC, partition), offset + 1);
-
-            }
             catch (Exception e){
                 log.error("Exception is : {} ", e.getMessage(), e);
                 consumer.commitSync();
                 log.info("Committed the offset catch");
-            }finally {
-                consumer.commitSync();
-//                consumer.commitAsync((map, e) -> {
-//                    log.info("Committed the offset map : {} , e : {} ",map, e );
-//                });
             }
-
 
         }
     }

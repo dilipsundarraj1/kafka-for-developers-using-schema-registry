@@ -7,6 +7,8 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -17,6 +19,7 @@ import static com.learnavro.util.CoffeeOrderUtil.buildNewCoffeeOrder;
 public class CoffeeOrderProducerSchemaRegistry {
 
     private static final String COFFEE_ORDERS_TOPIC = "coffee-orders-sr";
+    private static final Logger log = LoggerFactory.getLogger(CoffeeOrderProducerSchemaRegistry.class);
 
 
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
@@ -41,7 +44,7 @@ public class CoffeeOrderProducerSchemaRegistry {
 //        ProducerRecord<OrderId, CoffeeOrder> producerRecord =
 //                new ProducerRecord<>(COFFEE_ORDERS_TOPIC,coffeeOrder.getId(), coffeeOrder);
         var recordMetaData = producer.send(producerRecord).get();
-        System.out.println("recordMetaData : " + recordMetaData);
+        log.info("recordMetaData : {}" , recordMetaData);
 
     }
 

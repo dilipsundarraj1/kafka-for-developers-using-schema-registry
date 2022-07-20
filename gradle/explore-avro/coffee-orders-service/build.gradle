@@ -21,7 +21,7 @@ repositories {
 dependencies {
 
     //implementation project(':schemas')
-    implementation "com.learnavro:schemas:4.0"
+    implementation "com.learnavro:schemas:3.0"
 
     implementation "org.apache.avro:avro:1.10.1"
 

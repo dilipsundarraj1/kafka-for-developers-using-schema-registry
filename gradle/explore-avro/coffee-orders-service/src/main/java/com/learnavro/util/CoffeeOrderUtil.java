@@ -17,13 +17,14 @@ public class CoffeeOrderUtil {
 
         return CoffeeOrder.newBuilder()
                 .setId(orderId)
-               .setName("Dilip Sundarraj")
+               //.setName("Dilip Sundarraj")
                 //.setNickName("DS")
-                //.setFullName("Dilip Sundarraj")
+                .setFullName("Dilip Sundarraj")
                 .setStore(generateStore())
                 .setOrderLineItems(generateOrderLineItems())
                 .setOrderedTime(Instant.now())
-                 .setPickUp(PickUp.IN_STORE)
+                 //.setPickUp(PickUp.IN_STORE)
+                .setPickUpType(PickUp.IN_STORE)
                 .build();
 
 

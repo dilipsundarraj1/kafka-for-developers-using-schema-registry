@@ -14,7 +14,7 @@ ext {
 }
 
 group 'com.learnavro'
-version '5.0'
+version '3.0'
 
 
 repositories {
