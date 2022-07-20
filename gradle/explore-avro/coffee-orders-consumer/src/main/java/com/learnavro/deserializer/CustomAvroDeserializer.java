@@ -1,6 +1,5 @@
-package com.learnavro.deserialization;
+package com.learnavro.deserializer;
 
-import io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import org.apache.avro.Schema;
 import org.slf4j.Logger;

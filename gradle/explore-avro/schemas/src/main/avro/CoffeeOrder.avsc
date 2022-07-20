@@ -8,7 +8,7 @@
       "type": "OrderId"
     },
     {
-      "name": "full_name",
+      "name": "name",
       "type": "string"
     },
 //        {
@@ -42,17 +42,17 @@
         "logicalType": "timestamp-millis"
       }
     },
-    {
-      "name": "pick_up_type",
-      "type": {
-        "type": "enum",
-        "name": "PickUp",
-        "symbols": [
-          "IN_STORE",
-          "CURBSIDE"
-        ]
-      }
-    },
+//    {
+//      "name": "pick_up_type",
+//      "type": {
+//        "type": "enum",
+//        "name": "PickUp",
+//        "symbols": [
+//          "IN_STORE",
+//          "CURBSIDE"
+//        ]
+//      }
+//    },
     {
       "name": "status",
       "type": "string",

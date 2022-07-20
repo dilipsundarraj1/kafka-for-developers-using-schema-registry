@@ -11,7 +11,7 @@ import java.util.Random;
 public class CoffeeOrderUtil {
 
     public static CoffeeOrder buildNewCoffeeOrder(){
-        var orderId=   new OrderId().newBuilder()
+        var orderId=   OrderId.newBuilder()
                 .setId(randomId())
                 .build();
 

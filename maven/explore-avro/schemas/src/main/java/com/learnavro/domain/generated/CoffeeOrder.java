@@ -14,13 +14,12 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2144888531837705811L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"record\",\"name\":\"OrderId\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"nickName\",\"type\":\"string\",\"default\":\"\"},{\"name\":\"store\",\"type\":{\"type\":\"record\",\"name\":\"Store\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"fields\":[{\"name\":\"addressLine1\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state_province\",\"type\":\"string\"},{\"name\":\"country\",\"type\":\"string\",\"default\":\"USA\"},{\"name\":\"zip\",\"type\":\"string\"}]}}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":2}}]}}},{\"name\":\"ordered_time\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"pick_up\",\"type\":{\"type\":\"enum\",\"name\":\"PickUp\",\"symbols\":[\"IN_STORE\",\"CURBSIDE\"]}},{\"name\":\"inceptionDate\",\"type\":{\"type\":\"int\",\"logicalType\":\"date\"}},{\"name\":\"status\",\"type\":\"string\",\"default\":\"NEW\"}]}");
+  private static final long serialVersionUID = 9041328384628478411L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"record\",\"name\":\"OrderId\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"nickName\",\"type\":\"string\",\"doc\":\"Optional field represents the nick name for the user\",\"default\":\"\"},{\"name\":\"store\",\"type\":{\"type\":\"record\",\"name\":\"Store\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"fields\":[{\"name\":\"addressLine1\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state_province\",\"type\":\"string\"},{\"name\":\"country\",\"type\":\"string\",\"default\":\"USA\"},{\"name\":\"zip\",\"type\":\"string\"}]}}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":2}}]}}},{\"name\":\"ordered_time\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"status\",\"type\":\"string\",\"default\":\"NEW\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 static {
-    MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.DateConversion());
     MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.TimestampMillisConversion());
     MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.DecimalConversion());
   }
@@ -78,12 +77,11 @@ static {
 
   @Deprecated public com.learnavro.domain.generated.OrderId id;
   @Deprecated public java.lang.CharSequence name;
+  /** Optional field represents the nick name for the user */
   @Deprecated public java.lang.CharSequence nickName;
   @Deprecated public com.learnavro.domain.generated.Store store;
   @Deprecated public java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems;
   @Deprecated public java.time.Instant ordered_time;
-  @Deprecated public com.learnavro.domain.generated.PickUp pick_up;
-  @Deprecated public java.time.LocalDate inceptionDate;
   @Deprecated public java.lang.CharSequence status;
 
   /**
@@ -97,23 +95,19 @@ static {
    * All-args constructor.
    * @param id The new value for id
    * @param name The new value for name
-   * @param nickName The new value for nickName
+   * @param nickName Optional field represents the nick name for the user
    * @param store The new value for store
    * @param orderLineItems The new value for orderLineItems
    * @param ordered_time The new value for ordered_time
-   * @param pick_up The new value for pick_up
-   * @param inceptionDate The new value for inceptionDate
    * @param status The new value for status
    */
-  public CoffeeOrder(com.learnavro.domain.generated.OrderId id, java.lang.CharSequence name, java.lang.CharSequence nickName, com.learnavro.domain.generated.Store store, java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems, java.time.Instant ordered_time, com.learnavro.domain.generated.PickUp pick_up, java.time.LocalDate inceptionDate, java.lang.CharSequence status) {
+  public CoffeeOrder(com.learnavro.domain.generated.OrderId id, java.lang.CharSequence name, java.lang.CharSequence nickName, com.learnavro.domain.generated.Store store, java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems, java.time.Instant ordered_time, java.lang.CharSequence status) {
     this.id = id;
     this.name = name;
     this.nickName = nickName;
     this.store = store;
     this.orderLineItems = orderLineItems;
     this.ordered_time = ordered_time.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
-    this.pick_up = pick_up;
-    this.inceptionDate = inceptionDate;
     this.status = status;
   }
 
@@ -128,9 +122,7 @@ static {
     case 3: return store;
     case 4: return orderLineItems;
     case 5: return ordered_time;
-    case 6: return pick_up;
-    case 7: return inceptionDate;
-    case 8: return status;
+    case 6: return status;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -143,8 +135,6 @@ static {
       null,
       null,
       new org.apache.avro.data.TimeConversions.TimestampMillisConversion(),
-      null,
-      new org.apache.avro.data.TimeConversions.DateConversion(),
       null,
       null
   };
@@ -164,9 +154,7 @@ static {
     case 3: store = (com.learnavro.domain.generated.Store)value$; break;
     case 4: orderLineItems = (java.util.List<com.learnavro.domain.generated.OrderLineItem>)value$; break;
     case 5: ordered_time = (java.time.Instant)value$; break;
-    case 6: pick_up = (com.learnavro.domain.generated.PickUp)value$; break;
-    case 7: inceptionDate = (java.time.LocalDate)value$; break;
-    case 8: status = (java.lang.CharSequence)value$; break;
+    case 6: status = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -207,7 +195,7 @@ static {
 
   /**
    * Gets the value of the 'nickName' field.
-   * @return The value of the 'nickName' field.
+   * @return Optional field represents the nick name for the user
    */
   public java.lang.CharSequence getNickName() {
     return nickName;
@@ -216,6 +204,7 @@ static {
 
   /**
    * Sets the value of the 'nickName' field.
+   * Optional field represents the nick name for the user
    * @param value the value to set.
    */
   public void setNickName(java.lang.CharSequence value) {
@@ -271,40 +260,6 @@ static {
    */
   public void setOrderedTime(java.time.Instant value) {
     this.ordered_time = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
-  }
-
-  /**
-   * Gets the value of the 'pick_up' field.
-   * @return The value of the 'pick_up' field.
-   */
-  public com.learnavro.domain.generated.PickUp getPickUp() {
-    return pick_up;
-  }
-
-
-  /**
-   * Sets the value of the 'pick_up' field.
-   * @param value the value to set.
-   */
-  public void setPickUp(com.learnavro.domain.generated.PickUp value) {
-    this.pick_up = value;
-  }
-
-  /**
-   * Gets the value of the 'inceptionDate' field.
-   * @return The value of the 'inceptionDate' field.
-   */
-  public java.time.LocalDate getInceptionDate() {
-    return inceptionDate;
-  }
-
-
-  /**
-   * Sets the value of the 'inceptionDate' field.
-   * @param value the value to set.
-   */
-  public void setInceptionDate(java.time.LocalDate value) {
-    this.inceptionDate = value;
   }
 
   /**
@@ -368,13 +323,12 @@ static {
     private com.learnavro.domain.generated.OrderId id;
     private com.learnavro.domain.generated.OrderId.Builder idBuilder;
     private java.lang.CharSequence name;
+    /** Optional field represents the nick name for the user */
     private java.lang.CharSequence nickName;
     private com.learnavro.domain.generated.Store store;
     private com.learnavro.domain.generated.Store.Builder storeBuilder;
     private java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems;
     private java.time.Instant ordered_time;
-    private com.learnavro.domain.generated.PickUp pick_up;
-    private java.time.LocalDate inceptionDate;
     private java.lang.CharSequence status;
 
     /** Creates a new Builder */
@@ -418,17 +372,9 @@ static {
         this.ordered_time = data().deepCopy(fields()[5].schema(), other.ordered_time);
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
-      if (isValidValue(fields()[6], other.pick_up)) {
-        this.pick_up = data().deepCopy(fields()[6].schema(), other.pick_up);
+      if (isValidValue(fields()[6], other.status)) {
+        this.status = data().deepCopy(fields()[6].schema(), other.status);
         fieldSetFlags()[6] = other.fieldSetFlags()[6];
-      }
-      if (isValidValue(fields()[7], other.inceptionDate)) {
-        this.inceptionDate = data().deepCopy(fields()[7].schema(), other.inceptionDate);
-        fieldSetFlags()[7] = other.fieldSetFlags()[7];
-      }
-      if (isValidValue(fields()[8], other.status)) {
-        this.status = data().deepCopy(fields()[8].schema(), other.status);
-        fieldSetFlags()[8] = other.fieldSetFlags()[8];
       }
     }
 
@@ -464,17 +410,9 @@ static {
         this.ordered_time = data().deepCopy(fields()[5].schema(), other.ordered_time);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.pick_up)) {
-        this.pick_up = data().deepCopy(fields()[6].schema(), other.pick_up);
+      if (isValidValue(fields()[6], other.status)) {
+        this.status = data().deepCopy(fields()[6].schema(), other.status);
         fieldSetFlags()[6] = true;
-      }
-      if (isValidValue(fields()[7], other.inceptionDate)) {
-        this.inceptionDate = data().deepCopy(fields()[7].schema(), other.inceptionDate);
-        fieldSetFlags()[7] = true;
-      }
-      if (isValidValue(fields()[8], other.status)) {
-        this.status = data().deepCopy(fields()[8].schema(), other.status);
-        fieldSetFlags()[8] = true;
       }
     }
 
@@ -595,6 +533,7 @@ static {
 
     /**
       * Gets the value of the 'nickName' field.
+      * Optional field represents the nick name for the user
       * @return The value.
       */
     public java.lang.CharSequence getNickName() {
@@ -604,6 +543,7 @@ static {
 
     /**
       * Sets the value of the 'nickName' field.
+      * Optional field represents the nick name for the user
       * @param value The value of 'nickName'.
       * @return This builder.
       */
@@ -616,6 +556,7 @@ static {
 
     /**
       * Checks whether the 'nickName' field has been set.
+      * Optional field represents the nick name for the user
       * @return True if the 'nickName' field has been set, false otherwise.
       */
     public boolean hasNickName() {
@@ -625,6 +566,7 @@ static {
 
     /**
       * Clears the value of the 'nickName' field.
+      * Optional field represents the nick name for the user
       * @return This builder.
       */
     public com.learnavro.domain.generated.CoffeeOrder.Builder clearNickName() {
@@ -788,85 +730,6 @@ static {
     }
 
     /**
-      * Gets the value of the 'pick_up' field.
-      * @return The value.
-      */
-    public com.learnavro.domain.generated.PickUp getPickUp() {
-      return pick_up;
-    }
-
-
-    /**
-      * Sets the value of the 'pick_up' field.
-      * @param value The value of 'pick_up'.
-      * @return This builder.
-      */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder setPickUp(com.learnavro.domain.generated.PickUp value) {
-      validate(fields()[6], value);
-      this.pick_up = value;
-      fieldSetFlags()[6] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'pick_up' field has been set.
-      * @return True if the 'pick_up' field has been set, false otherwise.
-      */
-    public boolean hasPickUp() {
-      return fieldSetFlags()[6];
-    }
-
-
-    /**
-      * Clears the value of the 'pick_up' field.
-      * @return This builder.
-      */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder clearPickUp() {
-      pick_up = null;
-      fieldSetFlags()[6] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'inceptionDate' field.
-      * @return The value.
-      */
-    public java.time.LocalDate getInceptionDate() {
-      return inceptionDate;
-    }
-
-
-    /**
-      * Sets the value of the 'inceptionDate' field.
-      * @param value The value of 'inceptionDate'.
-      * @return This builder.
-      */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder setInceptionDate(java.time.LocalDate value) {
-      validate(fields()[7], value);
-      this.inceptionDate = value;
-      fieldSetFlags()[7] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'inceptionDate' field has been set.
-      * @return True if the 'inceptionDate' field has been set, false otherwise.
-      */
-    public boolean hasInceptionDate() {
-      return fieldSetFlags()[7];
-    }
-
-
-    /**
-      * Clears the value of the 'inceptionDate' field.
-      * @return This builder.
-      */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder clearInceptionDate() {
-      fieldSetFlags()[7] = false;
-      return this;
-    }
-
-    /**
       * Gets the value of the 'status' field.
       * @return The value.
       */
@@ -881,9 +744,9 @@ static {
       * @return This builder.
       */
     public com.learnavro.domain.generated.CoffeeOrder.Builder setStatus(java.lang.CharSequence value) {
-      validate(fields()[8], value);
+      validate(fields()[6], value);
       this.status = value;
-      fieldSetFlags()[8] = true;
+      fieldSetFlags()[6] = true;
       return this;
     }
 
@@ -892,7 +755,7 @@ static {
       * @return True if the 'status' field has been set, false otherwise.
       */
     public boolean hasStatus() {
-      return fieldSetFlags()[8];
+      return fieldSetFlags()[6];
     }
 
 
@@ -902,7 +765,7 @@ static {
       */
     public com.learnavro.domain.generated.CoffeeOrder.Builder clearStatus() {
       status = null;
-      fieldSetFlags()[8] = false;
+      fieldSetFlags()[6] = false;
       return this;
     }
 
@@ -935,9 +798,7 @@ static {
         }
         record.orderLineItems = fieldSetFlags()[4] ? this.orderLineItems : (java.util.List<com.learnavro.domain.generated.OrderLineItem>) defaultValue(fields()[4]);
         record.ordered_time = fieldSetFlags()[5] ? this.ordered_time : (java.time.Instant) defaultValue(fields()[5]);
-        record.pick_up = fieldSetFlags()[6] ? this.pick_up : (com.learnavro.domain.generated.PickUp) defaultValue(fields()[6]);
-        record.inceptionDate = fieldSetFlags()[7] ? this.inceptionDate : (java.time.LocalDate) defaultValue(fields()[7]);
-        record.status = fieldSetFlags()[8] ? this.status : (java.lang.CharSequence) defaultValue(fields()[8]);
+        record.status = fieldSetFlags()[6] ? this.status : (java.lang.CharSequence) defaultValue(fields()[6]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;

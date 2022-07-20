@@ -11,14 +11,15 @@
       "name": "name",
       "type": "string"
     },
-//    {
-//      "name": "full_name",
-//      "type": "string"
-//    },
+    //        {
+    //          "name": "full_name",
+    //          "type": "string"
+    //        },
     {
       "name": "nickName",
       "type": "string",
-      "default": ""
+      "default": "",
+      "doc": "Optional field represents the nick name for the user"
     },
     {
       "name": "store",
@@ -41,24 +42,17 @@
         "logicalType": "timestamp-millis"
       }
     },
-    {
-      "name": "pick_up",
-      "type": {
-        "type": "enum",
-        "name": "PickUp",
-        "symbols": [
-          "IN_STORE",
-          "CURBSIDE"
-        ]
-      }
-    },
-    {
-      "name": "inceptionDate",
-      "type": {
-        "type": "int",
-        "logicalType": "date"
-      }
-    },
+    //    {
+    //      "name": "pick_up_type",
+    //      "type": {
+    //        "type": "enum",
+    //        "name": "PickUp",
+    //        "symbols": [
+    //          "IN_STORE",
+    //          "CURBSIDE"
+    //        ]
+    //      }
+    //    },
     {
       "name": "status",
       "type": "string",

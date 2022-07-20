@@ -1,17 +1,13 @@
 package com.learnavro.consumer;
 
-import com.learnavro.deserialization.CustomAvroDeserializer;
+import com.learnavro.deserializer.CustomAvroDeserializer;
 import com.learnavro.domain.generated.CoffeeOrder;
-import com.learnavro.domain.generated.OrderId;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
-import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.TopicPartition;
-import org.apache.kafka.common.errors.SerializationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,8 +15,6 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CoffeeOrdersConsumerSchemaRegistry {
 
@@ -33,7 +27,8 @@ public class CoffeeOrdersConsumerSchemaRegistry {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "coffee.consumer7");
         //props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class.getName());
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, CustomAvroDeserializer.class.getName());
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class.getName());
+        //props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, CustomAvroDeserializer.class.getName());
         props.put(KafkaAvroDeserializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
         props.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
@@ -61,6 +56,7 @@ public class CoffeeOrdersConsumerSchemaRegistry {
             }
             catch (Exception e){
                 log.error("Exception is : {} ", e.getMessage(), e);
+            }finally {
                 consumer.commitSync();
                 log.info("Committed the offset catch");
             }

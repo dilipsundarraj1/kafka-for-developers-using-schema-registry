@@ -4,7 +4,6 @@ import com.learnavro.domain.generated.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
@@ -19,28 +18,29 @@ public class CoffeeOrderUtil {
         return CoffeeOrder.newBuilder()
                 .setId(orderId)
                 .setName("Dilip Sundarraj")
-                //.setFullName("Dilip Sundarraj")
+                //.setNickName("DS")
+               // .setFullName("Dilip Sundarraj")
                 .setStore(generateStore())
                 .setOrderLineItems(generateOrderLineItems())
                 .setOrderedTime(Instant.now())
-                .setInceptionDate(LocalDate.now())
-               .setPickUp(PickUp.IN_STORE)
+                //.setPickUp(PickUp.IN_STORE)
+                //.setPickUpType(PickUp.IN_STORE)
                 .build();
 
 
     }
 
-    public static CoffeeOrderOld buildNewCoffeeOrderV2(){
-
-        return CoffeeOrderOld.newBuilder()
-                .setId(randomId())
-                .setName("Chicago 1234")
-                .setStore(generateStore())
-                .setOrderLineItems(generateOrderLineItems())
-                .build();
-
-
-    }
+//    public static CoffeeOrderOld buildNewCoffeeOrderV2(){
+//
+//        return CoffeeOrderOld.newBuilder()
+//                .setId(randomId())
+//                .setName("Chicago 1234")
+//                .setStore(generateStore())
+//                .setOrderLineItems(generateOrderLineItems())
+//                .build();
+//
+//
+//    }
 
     private static List<OrderLineItem> generateOrderLineItems() {
 
@@ -75,11 +75,7 @@ public class CoffeeOrderUtil {
     }
 
     public static int randomId(){
-         Random random = new Random();
-         return random.nextInt(1000);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(Instant.now());
+        Random random = new Random();
+        return random.nextInt(1000);
     }
 }
