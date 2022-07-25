@@ -26,8 +26,6 @@ public class CoffeeOrderProducer {
 
         KafkaProducer<String, byte[]> producer = new KafkaProducer<>(props);
 
-        Thread shutdownHook = new Thread(producer::close);
-        Runtime.getRuntime().addShutdownHook(shutdownHook);
         CoffeeOrder coffeeOrder = buildNewCoffeeOrder();
 
         byte[] value = coffeeOrder.toByteBuffer().array();
