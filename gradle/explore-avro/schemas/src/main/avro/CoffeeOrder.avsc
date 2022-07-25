@@ -42,6 +42,17 @@
         "logicalType": "timestamp-millis"
       }
     },
+        {
+          "name": "pick_up",
+          "type": {
+            "type": "enum",
+            "name": "PickUp",
+            "symbols": [
+              "IN_STORE",
+              "CURBSIDE"
+            ]
+          }
+        },
 //    {
 //      "name": "pick_up_type",
 //      "type": {
