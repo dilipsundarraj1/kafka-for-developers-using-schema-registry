@@ -9,8 +9,10 @@
     },
     {
       "name": "id",
-      "type": "string",
-      "logicalType": "uuid"
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
     },
     {
       "name": "createdDateTime",

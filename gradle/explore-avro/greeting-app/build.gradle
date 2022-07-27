@@ -50,3 +50,7 @@ tasks.named("compileJava").configure {
 test {
     useJUnitPlatform()
 }
+
+avro {
+    customConversion org.apache.avro.Conversions.UUIDConversion
+}

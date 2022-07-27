@@ -15,12 +15,13 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class Greeting extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 5005245098722827652L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Greeting\",\"namespace\":\"com.learnavro\",\"fields\":[{\"name\":\"greeting\",\"type\":\"string\"},{\"name\":\"id\",\"type\":\"string\",\"logicalType\":\"uuid\"},{\"name\":\"createdDateTime\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"createdDate\",\"type\":{\"type\":\"int\",\"logicalType\":\"date\"}},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":4,\"scale\":3}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Greeting\",\"namespace\":\"com.learnavro\",\"fields\":[{\"name\":\"greeting\",\"type\":\"string\"},{\"name\":\"id\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"createdDateTime\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"createdDate\",\"type\":{\"type\":\"int\",\"logicalType\":\"date\"}},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":4,\"scale\":3}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 static {
     MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.DateConversion());
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.UUIDConversion());
     MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.TimestampMillisConversion());
     MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.DecimalConversion());
   }
@@ -77,7 +78,7 @@ static {
   }
 
   @Deprecated public java.lang.CharSequence greeting;
-  @Deprecated public java.lang.CharSequence id;
+  @Deprecated public java.util.UUID id;
   @Deprecated public java.time.Instant createdDateTime;
   @Deprecated public java.time.LocalDate createdDate;
   @Deprecated public java.math.BigDecimal cost;
@@ -97,7 +98,7 @@ static {
    * @param createdDate The new value for createdDate
    * @param cost The new value for cost
    */
-  public Greeting(java.lang.CharSequence greeting, java.lang.CharSequence id, java.time.Instant createdDateTime, java.time.LocalDate createdDate, java.math.BigDecimal cost) {
+  public Greeting(java.lang.CharSequence greeting, java.util.UUID id, java.time.Instant createdDateTime, java.time.LocalDate createdDate, java.math.BigDecimal cost) {
     this.greeting = greeting;
     this.id = id;
     this.createdDateTime = createdDateTime.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
@@ -122,7 +123,7 @@ static {
   private static final org.apache.avro.Conversion<?>[] conversions =
       new org.apache.avro.Conversion<?>[] {
       null,
-      null,
+      new org.apache.avro.Conversions.UUIDConversion(),
       new org.apache.avro.data.TimeConversions.TimestampMillisConversion(),
       new org.apache.avro.data.TimeConversions.DateConversion(),
       new org.apache.avro.Conversions.DecimalConversion(),
@@ -139,7 +140,7 @@ static {
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: greeting = (java.lang.CharSequence)value$; break;
-    case 1: id = (java.lang.CharSequence)value$; break;
+    case 1: id = (java.util.UUID)value$; break;
     case 2: createdDateTime = (java.time.Instant)value$; break;
     case 3: createdDate = (java.time.LocalDate)value$; break;
     case 4: cost = (java.math.BigDecimal)value$; break;
@@ -168,7 +169,7 @@ static {
    * Gets the value of the 'id' field.
    * @return The value of the 'id' field.
    */
-  public java.lang.CharSequence getId() {
+  public java.util.UUID getId() {
     return id;
   }
 
@@ -177,7 +178,7 @@ static {
    * Sets the value of the 'id' field.
    * @param value the value to set.
    */
-  public void setId(java.lang.CharSequence value) {
+  public void setId(java.util.UUID value) {
     this.id = value;
   }
 
@@ -274,7 +275,7 @@ static {
     implements org.apache.avro.data.RecordBuilder<Greeting> {
 
     private java.lang.CharSequence greeting;
-    private java.lang.CharSequence id;
+    private java.util.UUID id;
     private java.time.Instant createdDateTime;
     private java.time.LocalDate createdDate;
     private java.math.BigDecimal cost;
@@ -384,7 +385,7 @@ static {
       * Gets the value of the 'id' field.
       * @return The value.
       */
-    public java.lang.CharSequence getId() {
+    public java.util.UUID getId() {
       return id;
     }
 
@@ -394,7 +395,7 @@ static {
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.learnavro.Greeting.Builder setId(java.lang.CharSequence value) {
+    public com.learnavro.Greeting.Builder setId(java.util.UUID value) {
       validate(fields()[1], value);
       this.id = value;
       fieldSetFlags()[1] = true;
@@ -544,7 +545,7 @@ static {
       try {
         Greeting record = new Greeting();
         record.greeting = fieldSetFlags()[0] ? this.greeting : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.id = fieldSetFlags()[1] ? this.id : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.id = fieldSetFlags()[1] ? this.id : (java.util.UUID) defaultValue(fields()[1]);
         record.createdDateTime = fieldSetFlags()[2] ? this.createdDateTime : (java.time.Instant) defaultValue(fields()[2]);
         record.createdDate = fieldSetFlags()[3] ? this.createdDate : (java.time.LocalDate) defaultValue(fields()[3]);
         record.cost = fieldSetFlags()[4] ? this.cost : (java.math.BigDecimal) defaultValue(fields()[4]);

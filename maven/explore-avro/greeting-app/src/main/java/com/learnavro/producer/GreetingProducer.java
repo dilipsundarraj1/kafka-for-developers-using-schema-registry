@@ -45,7 +45,7 @@ public class GreetingProducer {
 
         return Greeting.newBuilder()
                 .setGreeting(message)
-                .setId(UUID.randomUUID().toString())
+                .setId(UUID.randomUUID())
                 //.setCreatedDateTimeLocal(LocalDateTime.now()) // LocalDateTime
                 .setCreatedDateTime(Instant.now()) // UTC dateTime
                 .setCreatedDate(LocalDate.now()) // LocalDate

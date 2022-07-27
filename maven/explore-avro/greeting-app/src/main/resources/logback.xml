@@ -9,10 +9,10 @@
         </layout>
     </appender>
 
-    <logger name="com.learnkafka" level="info">
-        <appender-ref ref="CONSOLE"/>
-    </logger>
 
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
 
 
 </configuration>
