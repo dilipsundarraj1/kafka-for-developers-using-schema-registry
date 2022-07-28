@@ -7,6 +7,13 @@
       "name": "id",
       "type": "OrderId"
     },
+//    {
+//      "name": "id",
+//      "type": {
+//        "type": "string",
+//        "logicalType": "uuid"
+//      }
+//    },
     {
       "name": "name",
       "type": "string"

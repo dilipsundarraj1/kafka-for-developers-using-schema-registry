@@ -54,7 +54,7 @@
                                 <import>${project.basedir}/src/main/avro/Store.avsc</import>
                             </imports>
                             <enableDecimalLogicalType>true</enableDecimalLogicalType>
-<!--                            <dateTimeLogicalTypeImplementation>jsr310</dateTimeLogicalTypeImplementation>-->
+                            <customConversions>org.apache.avro.Conversions$UUIDConversion</customConversions>
                         </configuration>
                     </execution>
                 </executions>

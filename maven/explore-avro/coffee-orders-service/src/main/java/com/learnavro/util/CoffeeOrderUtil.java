@@ -7,6 +7,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 public class CoffeeOrderUtil {
 
@@ -17,6 +18,7 @@ public class CoffeeOrderUtil {
 
         return CoffeeOrder.newBuilder()
                 .setId(orderId)
+               // .setId(UUID.randomUUID())
                 .setName("Dilip Sundarraj")
                 //.setNickName("DS")
                // .setFullName("Dilip Sundarraj")
