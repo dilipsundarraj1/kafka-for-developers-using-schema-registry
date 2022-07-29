@@ -47,6 +47,9 @@ publishing {
     }
 }
 
+avro {
+    customConversion org.apache.avro.Conversions.UUIDConversion
+}
 
 test {
     useJUnitPlatform()
