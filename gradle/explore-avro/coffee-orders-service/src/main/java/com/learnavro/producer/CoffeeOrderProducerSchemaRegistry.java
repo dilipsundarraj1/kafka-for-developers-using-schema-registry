@@ -3,6 +3,8 @@ package com.learnavro.producer;
 import com.learnavro.domain.generated.CoffeeOrder;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import io.confluent.kafka.serializers.KafkaAvroSerializerConfig;
+import io.confluent.kafka.serializers.subject.RecordNameStrategy;
+import io.confluent.kafka.serializers.subject.TopicRecordNameStrategy;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -29,6 +31,8 @@ public class CoffeeOrderProducerSchemaRegistry {
         //props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
         props.put(KafkaAvroSerializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
+        //props.put(KafkaAvroSerializerConfig.VALUE_SUBJECT_NAME_STRATEGY, RecordNameStrategy.class.getName());
+        props.put(KafkaAvroSerializerConfig.VALUE_SUBJECT_NAME_STRATEGY, TopicRecordNameStrategy.class.getName());
 
 
         KafkaProducer<String, CoffeeOrder> producer = new KafkaProducer<>(props);
