@@ -1,0 +1,29 @@
+{
+  "name": "CoffeeOrderOld",
+  "namespace": "com.learnavro.domain.generated",
+  "type": "record",
+  "fields": [
+    {
+         "name": "id",
+         "type": "long"
+       },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "store",
+      "type": "Store"
+    },
+    {
+      "name": "orderLineItems",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "OrderLineItem",
+          "name": "orderLineItem"
+        }
+      }
+    }
+  ]
+}
