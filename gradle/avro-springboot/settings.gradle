@@ -9,3 +9,5 @@ pluginManagement {
     }
 }
 rootProject.name = 'avro-springboot'
+include('coffee-orders-service')
+include('coffee-orders-consumer')
