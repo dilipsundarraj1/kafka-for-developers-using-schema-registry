@@ -14,8 +14,15 @@ configurations {
     }
 }
 
+ext {
+    avroVersion = "1.10.0"
+}
+
+
 repositories {
     mavenCentral()
+    maven {url "https://packages.confluent.io/maven/"}
+    maven {url "https://jitpack.io"}
 }
 
 dependencies {
@@ -24,8 +31,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.kafka:spring-kafka'
+
+    //avro
+    implementation "org.apache.avro:avro:1.10.1"
+    implementation("io.confluent:kafka-avro-serializer:5.5.1")
+
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
 }

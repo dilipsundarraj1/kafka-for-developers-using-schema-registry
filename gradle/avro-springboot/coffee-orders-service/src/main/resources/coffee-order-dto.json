@@ -1,0 +1,23 @@
+{
+  "id": "a27d9492-1402-48d6-9bf7-2c59c76e8a34",
+  "name": "Dilip Sundarraj",
+  "nickName": "",
+  "store": {
+    "storeId": 123,
+    "address": {
+      "addressLine1": "1234 street",
+      "city": "Chicago",
+      "state": "Illinois",
+      "country": "USA",
+      "zip": "11244"
+    }
+  },
+  "orderLineItems": [{
+    "name": "Latte",
+    "size": "MEDIUM",
+    "quantity": 1,
+    "cost": 3.99
+  }],
+  "pickUp": "IN_STORE",
+  "status": "NEW"
+}
