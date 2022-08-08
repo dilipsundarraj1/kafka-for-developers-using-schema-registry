@@ -7,7 +7,7 @@
      <artifactId>avro-springboot</artifactId>
      <groupId>com.learnavro</groupId>
      <version>1.0-SNAPSHOT</version>
- </parent>`
+ </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>schemas</artifactId>

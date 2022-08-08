@@ -14,12 +14,13 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class CoffeeOrder extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -735474296123259975L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"record\",\"name\":\"OrderId\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"nickName\",\"type\":\"string\",\"doc\":\"Optional field represents the nick name for the user\",\"default\":\"\"},{\"name\":\"store\",\"type\":{\"type\":\"record\",\"name\":\"Store\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"fields\":[{\"name\":\"addressLine1\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state_province\",\"type\":\"string\"},{\"name\":\"country\",\"type\":\"string\",\"default\":\"USA\"},{\"name\":\"zip\",\"type\":\"string\"}]}}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":2}}]}}},{\"name\":\"ordered_time\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"pick_up\",\"type\":{\"type\":\"enum\",\"name\":\"PickUp\",\"symbols\":[\"IN_STORE\",\"CURBSIDE\"]}},{\"name\":\"status\",\"type\":\"string\",\"default\":\"NEW\"}]}");
+  private static final long serialVersionUID = 7072003122212636292L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeOrder\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"nickName\",\"type\":\"string\",\"doc\":\"Optional field represents the nick name for the user\",\"default\":\"\"},{\"name\":\"store\",\"type\":{\"type\":\"record\",\"name\":\"Store\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"fields\":[{\"name\":\"addressLine1\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state_province\",\"type\":\"string\"},{\"name\":\"country\",\"type\":\"string\",\"default\":\"USA\"},{\"name\":\"zip\",\"type\":\"string\"}]}}]}},{\"name\":\"orderLineItems\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderLineItem\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"size\",\"type\":{\"type\":\"enum\",\"name\":\"Size\",\"symbols\":[\"SMALL\",\"MEDIUM\",\"LARGE\"]}},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"cost\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":3,\"scale\":2}}]}}},{\"name\":\"ordered_time\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"pick_up\",\"type\":{\"type\":\"enum\",\"name\":\"PickUp\",\"symbols\":[\"IN_STORE\",\"CURBSIDE\"]}},{\"name\":\"status\",\"type\":\"string\",\"default\":\"NEW\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 static {
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.UUIDConversion());
     MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.TimestampMillisConversion());
     MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.DecimalConversion());
   }
@@ -75,7 +76,7 @@ static {
     return DECODER.decode(b);
   }
 
-  @Deprecated public com.learnavro.domain.generated.OrderId id;
+  @Deprecated public java.util.UUID id;
   @Deprecated public java.lang.CharSequence name;
   /** Optional field represents the nick name for the user */
   @Deprecated public java.lang.CharSequence nickName;
@@ -103,7 +104,7 @@ static {
    * @param pick_up The new value for pick_up
    * @param status The new value for status
    */
-  public CoffeeOrder(com.learnavro.domain.generated.OrderId id, java.lang.CharSequence name, java.lang.CharSequence nickName, com.learnavro.domain.generated.Store store, java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems, java.time.Instant ordered_time, com.learnavro.domain.generated.PickUp pick_up, java.lang.CharSequence status) {
+  public CoffeeOrder(java.util.UUID id, java.lang.CharSequence name, java.lang.CharSequence nickName, com.learnavro.domain.generated.Store store, java.util.List<com.learnavro.domain.generated.OrderLineItem> orderLineItems, java.time.Instant ordered_time, com.learnavro.domain.generated.PickUp pick_up, java.lang.CharSequence status) {
     this.id = id;
     this.name = name;
     this.nickName = nickName;
@@ -133,7 +134,7 @@ static {
 
   private static final org.apache.avro.Conversion<?>[] conversions =
       new org.apache.avro.Conversion<?>[] {
-      null,
+      new org.apache.avro.Conversions.UUIDConversion(),
       null,
       null,
       null,
@@ -153,7 +154,7 @@ static {
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: id = (com.learnavro.domain.generated.OrderId)value$; break;
+    case 0: id = (java.util.UUID)value$; break;
     case 1: name = (java.lang.CharSequence)value$; break;
     case 2: nickName = (java.lang.CharSequence)value$; break;
     case 3: store = (com.learnavro.domain.generated.Store)value$; break;
@@ -169,7 +170,7 @@ static {
    * Gets the value of the 'id' field.
    * @return The value of the 'id' field.
    */
-  public com.learnavro.domain.generated.OrderId getId() {
+  public java.util.UUID getId() {
     return id;
   }
 
@@ -178,7 +179,7 @@ static {
    * Sets the value of the 'id' field.
    * @param value the value to set.
    */
-  public void setId(com.learnavro.domain.generated.OrderId value) {
+  public void setId(java.util.UUID value) {
     this.id = value;
   }
 
@@ -343,8 +344,7 @@ static {
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<CoffeeOrder>
     implements org.apache.avro.data.RecordBuilder<CoffeeOrder> {
 
-    private com.learnavro.domain.generated.OrderId id;
-    private com.learnavro.domain.generated.OrderId.Builder idBuilder;
+    private java.util.UUID id;
     private java.lang.CharSequence name;
     /** Optional field represents the nick name for the user */
     private java.lang.CharSequence nickName;
@@ -369,9 +369,6 @@ static {
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
-      }
-      if (other.hasIdBuilder()) {
-        this.idBuilder = com.learnavro.domain.generated.OrderId.newBuilder(other.getIdBuilder());
       }
       if (isValidValue(fields()[1], other.name)) {
         this.name = data().deepCopy(fields()[1].schema(), other.name);
@@ -416,7 +413,6 @@ static {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
         fieldSetFlags()[0] = true;
       }
-      this.idBuilder = null;
       if (isValidValue(fields()[1], other.name)) {
         this.name = data().deepCopy(fields()[1].schema(), other.name);
         fieldSetFlags()[1] = true;
@@ -452,7 +448,7 @@ static {
       * Gets the value of the 'id' field.
       * @return The value.
       */
-    public com.learnavro.domain.generated.OrderId getId() {
+    public java.util.UUID getId() {
       return id;
     }
 
@@ -462,9 +458,8 @@ static {
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder setId(com.learnavro.domain.generated.OrderId value) {
+    public com.learnavro.domain.generated.CoffeeOrder.Builder setId(java.util.UUID value) {
       validate(fields()[0], value);
-      this.idBuilder = null;
       this.id = value;
       fieldSetFlags()[0] = true;
       return this;
@@ -478,39 +473,6 @@ static {
       return fieldSetFlags()[0];
     }
 
-    /**
-     * Gets the Builder instance for the 'id' field and creates one if it doesn't exist yet.
-     * @return This builder.
-     */
-    public com.learnavro.domain.generated.OrderId.Builder getIdBuilder() {
-      if (idBuilder == null) {
-        if (hasId()) {
-          setIdBuilder(com.learnavro.domain.generated.OrderId.newBuilder(id));
-        } else {
-          setIdBuilder(com.learnavro.domain.generated.OrderId.newBuilder());
-        }
-      }
-      return idBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'id' field
-     * @param value The builder instance that must be set.
-     * @return This builder.
-     */
-    public com.learnavro.domain.generated.CoffeeOrder.Builder setIdBuilder(com.learnavro.domain.generated.OrderId.Builder value) {
-      clearId();
-      idBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'id' field has an active Builder instance
-     * @return True if the 'id' field has an active Builder instance
-     */
-    public boolean hasIdBuilder() {
-      return idBuilder != null;
-    }
 
     /**
       * Clears the value of the 'id' field.
@@ -518,7 +480,6 @@ static {
       */
     public com.learnavro.domain.generated.CoffeeOrder.Builder clearId() {
       id = null;
-      idBuilder = null;
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -846,16 +807,7 @@ static {
     public CoffeeOrder build() {
       try {
         CoffeeOrder record = new CoffeeOrder();
-        if (idBuilder != null) {
-          try {
-            record.id = this.idBuilder.build();
-          } catch (org.apache.avro.AvroMissingFieldException e) {
-            e.addParentField(record.getSchema().getField("id"));
-            throw e;
-          }
-        } else {
-          record.id = fieldSetFlags()[0] ? this.id : (com.learnavro.domain.generated.OrderId) defaultValue(fields()[0]);
-        }
+        record.id = fieldSetFlags()[0] ? this.id : (java.util.UUID) defaultValue(fields()[0]);
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.nickName = fieldSetFlags()[2] ? this.nickName : (java.lang.CharSequence) defaultValue(fields()[2]);
         if (storeBuilder != null) {

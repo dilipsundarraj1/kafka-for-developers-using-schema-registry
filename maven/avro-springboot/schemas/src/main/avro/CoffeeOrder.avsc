@@ -5,7 +5,10 @@
   "fields": [
     {
       "name": "id",
-      "type": "OrderId"
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
     },
     {
       "name": "name",
