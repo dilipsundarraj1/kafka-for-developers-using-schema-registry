@@ -36,7 +36,7 @@ dependencies {
     implementation "org.apache.avro:avro:1.10.1"
     implementation("io.confluent:kafka-avro-serializer:5.5.1")
 
-
+    //lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
