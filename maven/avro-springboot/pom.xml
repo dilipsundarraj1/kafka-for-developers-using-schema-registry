@@ -7,6 +7,7 @@
     <modules>
         <module>coffee-orders-service</module>
         <module>coffee-orders-consumer</module>
+        <module>schemas</module>
     </modules>
 
     <parent>
@@ -17,7 +18,7 @@
     </parent>
 
 
-    <groupId>org.learnavro</groupId>
+    <groupId>com.learnavro</groupId>
     <artifactId>avro-springboot</artifactId>
     <version>1.0-SNAPSHOT</version>
 
