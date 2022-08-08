@@ -6,6 +6,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>coffee-orders-service</module>
+        <module>coffee-orders-consumer</module>
     </modules>
 
     <parent>
