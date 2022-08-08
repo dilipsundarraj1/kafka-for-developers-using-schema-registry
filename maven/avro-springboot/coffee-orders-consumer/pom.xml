@@ -9,6 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <repositories>
+        <repository>
+            <id>confluent</id>
+            <name>Confluent</name>
+            <url>https://packages.confluent.io/maven/</url>
+        </repository>
+    </repositories>
+
+
     <artifactId>coffee-orders-consumer</artifactId>
 
     <properties>
@@ -37,6 +46,21 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
+
+        <!--Avro-->
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>1.10.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
+            <version>5.5.1</version>
+        </dependency>
+
+
 
         <dependency>
             <groupId>org.projectlombok</groupId>
