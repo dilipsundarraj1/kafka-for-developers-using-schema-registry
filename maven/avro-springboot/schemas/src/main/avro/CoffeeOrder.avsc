@@ -1,0 +1,58 @@
+{
+  "name": "CoffeeOrder",
+  "namespace": "com.learnavro.domain.generated",
+  "type": "record",
+  "fields": [
+    {
+      "name": "id",
+      "type": "OrderId"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "nickName",
+      "type": "string",
+      "default": "",
+      "doc": "Optional field represents the nick name for the user"
+    },
+    {
+      "name": "store",
+      "type": "Store"
+    },
+    {
+      "name": "orderLineItems",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "OrderLineItem",
+          "name": "orderLineItem"
+        }
+      }
+    },
+    {
+      "name": "ordered_time",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "pick_up",
+      "type": {
+        "type": "enum",
+        "name": "PickUp",
+        "symbols": [
+          "IN_STORE",
+          "CURBSIDE"
+        ]
+      }
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "default": "NEW"
+    }
+  ]
+}
