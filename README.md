@@ -146,12 +146,12 @@ Let's follow the steps given in this section :
    1) Error in producer observed and then go ahead update the compatibility to **FORWARD**
    2) Publish the record with **pick_up** field
 5) Consumer should process the records fine with **schemas** module version 2.0
-6) Upgrade the consumer's **schemas** module version 3.0 
+6) Upgrade the consumer's **schemas** module version 3.0
    1) Publish the record with **3.0** and the consumer should process the records successfully.
 7) The subject in **coffee-orders-sr-value** should have a newer version **3.0**
 
 ### FULL Compatibility
-1) Add the new optional field **nickName**
+1) Add the new optional field **nickName1**
    1) This is an optional field named which represents other name
 2) Build 4.0 and publish the new version of AVRO classes
     1) Change the version in schemas module to **4.0**
@@ -242,6 +242,4 @@ Let's follow the steps given in this section :
            2) Execute **install**  task
 11) Change the compatibility to **FORWARD** using the INSOMNIA collection since we are adding a new field
     1) Update the consumer and producer to use schemas module **2.0** version and the restart both the apps
-12) 
-
-
+12)
