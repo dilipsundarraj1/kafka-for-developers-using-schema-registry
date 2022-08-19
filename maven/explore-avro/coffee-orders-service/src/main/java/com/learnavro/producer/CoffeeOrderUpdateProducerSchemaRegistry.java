@@ -6,6 +6,7 @@ import com.learnavro.domain.generated.OrderStatus;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import io.confluent.kafka.serializers.KafkaAvroSerializerConfig;
 import io.confluent.kafka.serializers.subject.RecordNameStrategy;
+import io.confluent.kafka.serializers.subject.TopicRecordNameStrategy;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -28,16 +29,18 @@ public class CoffeeOrderUpdateProducerSchemaRegistry {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
         props.put(KafkaAvroSerializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
-        props.put(KafkaAvroSerializerConfig.VALUE_SUBJECT_NAME_STRATEGY, RecordNameStrategy.class.getName());
+        //props.put(KafkaAvroSerializerConfig.VALUE_SUBJECT_NAME_STRATEGY, RecordNameStrategy.class.getName());
+        props.put(KafkaAvroSerializerConfig.VALUE_SUBJECT_NAME_STRATEGY, TopicRecordNameStrategy.class.getName());
 
-        KafkaProducer<OrderId, CoffeeUpdateEvent> producer = new KafkaProducer<>(props);
+
+        KafkaProducer<Integer, CoffeeUpdateEvent> producer = new KafkaProducer<>(props);
 
         //CoffeeUpdateEvent coffeeOrderUpdateEvent = buildCoffeeOrderUpdateEvent(OrderStatus.PROCESSING);
         CoffeeUpdateEvent coffeeOrderUpdateEvent = buildCoffeeOrderUpdateEvent(OrderStatus.READY_FOR_PICK_UP);
 
 //        byte[] value = coffeeOrder.toByteBuffer().array();
 
-        ProducerRecord<OrderId, CoffeeUpdateEvent> producerRecord =
+        ProducerRecord<Integer, CoffeeUpdateEvent> producerRecord =
                 new ProducerRecord<>(COFFEE_ORDERS_TOPIC, coffeeOrderUpdateEvent.getId(),
                         coffeeOrderUpdateEvent);
         var recordMetaData = producer.send(producerRecord).get();
@@ -47,12 +50,9 @@ public class CoffeeOrderUpdateProducerSchemaRegistry {
 
     private static CoffeeUpdateEvent buildCoffeeOrderUpdateEvent(OrderStatus orderStatus) {
 
-        var orderId=   new OrderId().newBuilder()
-                .setId(randomId())
-                .build();
 
-        return new CoffeeUpdateEvent().newBuilder()
-                .setId(orderId)
+        return CoffeeUpdateEvent.newBuilder()
+                .setId(123)
                 .setStatus(orderStatus)
                 .build();
 

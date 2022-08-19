@@ -5,7 +5,7 @@
   "fields": [
     {
       "name": "id",
-      "type": "OrderId"
+      "type": "int"
     },
     {
       "name": "status",
