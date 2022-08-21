@@ -1,3 +1,5 @@
+server:
+  port: 8082
 spring:
   profiles:
     active: local
@@ -15,4 +17,8 @@ spring:
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
     properties:
       schema.registry.url : http://localhost:8081
+      value:
+        subject:
+          name:
+            strategy: io.confluent.kafka.serializers.subject.RecordNameStrategy
 

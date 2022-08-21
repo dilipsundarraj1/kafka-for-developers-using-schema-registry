@@ -12,35 +12,34 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 
 @Component
 @Slf4j
-public class CoffeeOrderProducer {
+public class CoffeeOrderUpdateProducer {
+    KafkaTemplate<String, CoffeeUpdateEvent> kafkaTemplate;
 
-    KafkaTemplate<String, CoffeeOrder> kafkaTemplate;
-
-    public CoffeeOrderProducer(KafkaTemplate<String, CoffeeOrder> kafkaTemplate) {
+    public CoffeeOrderUpdateProducer(KafkaTemplate<String, CoffeeUpdateEvent> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendMessage(CoffeeOrder coffeeOrderAvro) {
-        var producerRecord = new ProducerRecord<>("coffee-orders", coffeeOrderAvro.getId().toString(), coffeeOrderAvro);
+    public void sendUpdateMessage(String orderId, CoffeeUpdateEvent coffeeOrderUpdateAvro) {
+        var producerRecord = new ProducerRecord<>("coffee-orders", orderId, coffeeOrderUpdateAvro);
 
 
-        ListenableFuture<SendResult<String, CoffeeOrder>> listenableFuture = kafkaTemplate.send(producerRecord);
-        ;
-        listenableFuture.addCallback(new ListenableFutureCallback<SendResult<String, CoffeeOrder>>() {
+        ListenableFuture<SendResult<String, CoffeeUpdateEvent>> listenableFuture = kafkaTemplate.send(producerRecord);
+        listenableFuture.addCallback(new ListenableFutureCallback<SendResult<String, CoffeeUpdateEvent>>() {
 
             @Override
             public void onFailure(Throwable ex) {
-                handleFailure(coffeeOrderAvro, ex);
+                handleFailure(coffeeOrderUpdateAvro, ex);
             }
 
             @Override
-            public void onSuccess(SendResult<String, CoffeeOrder> result) {
-                handleSuccess(coffeeOrderAvro, result);
+            public void onSuccess(SendResult<String, CoffeeUpdateEvent> result) {
+                handleSuccess(coffeeOrderUpdateAvro, result);
             }
         });
+
     }
 
-    private void handleFailure(CoffeeOrder coffeeOrder, Throwable ex) {
+    private void handleFailure(CoffeeUpdateEvent coffeeOrder, Throwable ex) {
         log.error("Error Sending the Message for {} and the exception is {}", coffeeOrder, ex.getMessage(), ex);
         try {
             throw ex;
@@ -48,12 +47,9 @@ public class CoffeeOrderProducer {
             log.error("Error in OnFailure: {}", throwable.getMessage());
         }
 
-
     }
 
-    private void handleSuccess(CoffeeOrder coffeeOrder, SendResult<String, CoffeeOrder> result) {
+    private void handleSuccess(CoffeeUpdateEvent coffeeOrder, SendResult<String, CoffeeUpdateEvent> result) {
         log.info("Message Sent SuccessFully for the key : {} and the value is {} , partition is {}", coffeeOrder.getId(), coffeeOrder, result.getRecordMetadata().partition());
     }
-
-
 }

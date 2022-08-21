@@ -17,7 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-//@JsonNaming(value = PropertyNamingStrategies.LowerCamelCaseStrategy.class)
 public class CoffeeOrderDTO {
 
     private String id;

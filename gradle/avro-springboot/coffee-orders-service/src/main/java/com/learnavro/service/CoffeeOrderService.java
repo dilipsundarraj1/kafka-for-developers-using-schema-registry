@@ -1,31 +1,37 @@
 package com.learnavro.service;
 
-import com.learnavro.domain.generated.Address;
-import com.learnavro.domain.generated.CoffeeOrder;
-import com.learnavro.domain.generated.OrderLineItem;
-import com.learnavro.domain.generated.Store;
+import com.learnavro.domain.generated.*;
 import com.learnavro.dto.CoffeeOrderDTO;
+import com.learnavro.dto.CoffeeOrderUpdateDTO;
 import com.learnavro.producer.CoffeeOrderProducer;
+import com.learnavro.producer.CoffeeOrderUpdateProducer;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class CoffeeOrderService {
 
     CoffeeOrderProducer coffeeOrderProducer;
+    CoffeeOrderUpdateProducer coffeeOrderUpdateProducer;
 
-    public CoffeeOrderService(CoffeeOrderProducer coffeeOrderProducer) {
+//    public CoffeeOrderService(CoffeeOrderProducer coffeeOrderProducer) {
+//        this.coffeeOrderProducer = coffeeOrderProducer;
+//    }
+
+    public CoffeeOrderService(CoffeeOrderProducer coffeeOrderProducer, CoffeeOrderUpdateProducer coffeeOrderUpdateProducer) {
         this.coffeeOrderProducer = coffeeOrderProducer;
+        this.coffeeOrderUpdateProducer = coffeeOrderUpdateProducer;
     }
+
 
     public CoffeeOrderDTO newOrder(CoffeeOrderDTO coffeeOrderDTO) {
         var coffeeOrderAvro = mapToCoffeeOrder(coffeeOrderDTO);
         coffeeOrderDTO.setId(coffeeOrderAvro.getId().toString());
+        //DB saving this order
         coffeeOrderProducer.sendMessage(coffeeOrderAvro);
         return coffeeOrderDTO;
     }
@@ -74,5 +80,20 @@ public class CoffeeOrderService {
                         storeDTO.getAddress().getZip()
                 ));
         return store;
+    }
+
+    public CoffeeOrderUpdateDTO updateOrder(String orderId, CoffeeOrderUpdateDTO coffeeOrderUpdateDTO) {
+        var coffeeOrderUpdateAvro = mapToCoffeeOrderUpdate(orderId, coffeeOrderUpdateDTO);
+        coffeeOrderUpdateProducer.sendUpdateMessage(orderId, coffeeOrderUpdateAvro);
+        return coffeeOrderUpdateDTO;
+    }
+
+    private CoffeeUpdateEvent mapToCoffeeOrderUpdate(String orderId, CoffeeOrderUpdateDTO coffeeOrderUpdateDTO) {
+
+        return CoffeeUpdateEvent
+                .newBuilder()
+                .setId(UUID.fromString(orderId))
+                .setStatus(coffeeOrderUpdateDTO.getOrderStatus())
+                .build();
     }
 }
