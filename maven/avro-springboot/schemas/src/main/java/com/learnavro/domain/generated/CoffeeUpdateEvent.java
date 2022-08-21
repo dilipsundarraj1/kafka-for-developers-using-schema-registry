@@ -14,11 +14,14 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -2429508796295993242L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeUpdateEvent\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"record\",\"name\":\"OrderId\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"status\",\"type\":{\"type\":\"enum\",\"name\":\"OrderStatus\",\"symbols\":[\"PROCESSING\",\"READY_FOR_PICK_UP\"]}}]}");
+  private static final long serialVersionUID = 7393473977674235155L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CoffeeUpdateEvent\",\"namespace\":\"com.learnavro.domain.generated\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"status\",\"type\":{\"type\":\"enum\",\"name\":\"OrderStatus\",\"symbols\":[\"PROCESSING\",\"READY_FOR_PICK_UP\"]}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
+static {
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.UUIDConversion());
+  }
 
   private static final BinaryMessageEncoder<CoffeeUpdateEvent> ENCODER =
       new BinaryMessageEncoder<CoffeeUpdateEvent>(MODEL$, SCHEMA$);
@@ -71,7 +74,7 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
     return DECODER.decode(b);
   }
 
-  @Deprecated public com.learnavro.domain.generated.OrderId id;
+  @Deprecated public java.util.UUID id;
   @Deprecated public com.learnavro.domain.generated.OrderStatus status;
 
   /**
@@ -86,7 +89,7 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
    * @param id The new value for id
    * @param status The new value for status
    */
-  public CoffeeUpdateEvent(com.learnavro.domain.generated.OrderId id, com.learnavro.domain.generated.OrderStatus status) {
+  public CoffeeUpdateEvent(java.util.UUID id, com.learnavro.domain.generated.OrderStatus status) {
     this.id = id;
     this.status = status;
   }
@@ -102,11 +105,23 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
     }
   }
 
+  private static final org.apache.avro.Conversion<?>[] conversions =
+      new org.apache.avro.Conversion<?>[] {
+      new org.apache.avro.Conversions.UUIDConversion(),
+      null,
+      null
+  };
+
+  @Override
+  public org.apache.avro.Conversion<?> getConversion(int field) {
+    return conversions[field];
+  }
+
   // Used by DatumReader.  Applications should not call.
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: id = (com.learnavro.domain.generated.OrderId)value$; break;
+    case 0: id = (java.util.UUID)value$; break;
     case 1: status = (com.learnavro.domain.generated.OrderStatus)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -116,7 +131,7 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'id' field.
    * @return The value of the 'id' field.
    */
-  public com.learnavro.domain.generated.OrderId getId() {
+  public java.util.UUID getId() {
     return id;
   }
 
@@ -125,7 +140,7 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
    * Sets the value of the 'id' field.
    * @param value the value to set.
    */
-  public void setId(com.learnavro.domain.generated.OrderId value) {
+  public void setId(java.util.UUID value) {
     this.id = value;
   }
 
@@ -187,8 +202,7 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<CoffeeUpdateEvent>
     implements org.apache.avro.data.RecordBuilder<CoffeeUpdateEvent> {
 
-    private com.learnavro.domain.generated.OrderId id;
-    private com.learnavro.domain.generated.OrderId.Builder idBuilder;
+    private java.util.UUID id;
     private com.learnavro.domain.generated.OrderStatus status;
 
     /** Creates a new Builder */
@@ -206,9 +220,6 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
         this.id = data().deepCopy(fields()[0].schema(), other.id);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
-      if (other.hasIdBuilder()) {
-        this.idBuilder = com.learnavro.domain.generated.OrderId.newBuilder(other.getIdBuilder());
-      }
       if (isValidValue(fields()[1], other.status)) {
         this.status = data().deepCopy(fields()[1].schema(), other.status);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
@@ -225,7 +236,6 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
         this.id = data().deepCopy(fields()[0].schema(), other.id);
         fieldSetFlags()[0] = true;
       }
-      this.idBuilder = null;
       if (isValidValue(fields()[1], other.status)) {
         this.status = data().deepCopy(fields()[1].schema(), other.status);
         fieldSetFlags()[1] = true;
@@ -236,7 +246,7 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
       * Gets the value of the 'id' field.
       * @return The value.
       */
-    public com.learnavro.domain.generated.OrderId getId() {
+    public java.util.UUID getId() {
       return id;
     }
 
@@ -246,9 +256,8 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.learnavro.domain.generated.CoffeeUpdateEvent.Builder setId(com.learnavro.domain.generated.OrderId value) {
+    public com.learnavro.domain.generated.CoffeeUpdateEvent.Builder setId(java.util.UUID value) {
       validate(fields()[0], value);
-      this.idBuilder = null;
       this.id = value;
       fieldSetFlags()[0] = true;
       return this;
@@ -262,39 +271,6 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
       return fieldSetFlags()[0];
     }
 
-    /**
-     * Gets the Builder instance for the 'id' field and creates one if it doesn't exist yet.
-     * @return This builder.
-     */
-    public com.learnavro.domain.generated.OrderId.Builder getIdBuilder() {
-      if (idBuilder == null) {
-        if (hasId()) {
-          setIdBuilder(com.learnavro.domain.generated.OrderId.newBuilder(id));
-        } else {
-          setIdBuilder(com.learnavro.domain.generated.OrderId.newBuilder());
-        }
-      }
-      return idBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'id' field
-     * @param value The builder instance that must be set.
-     * @return This builder.
-     */
-    public com.learnavro.domain.generated.CoffeeUpdateEvent.Builder setIdBuilder(com.learnavro.domain.generated.OrderId.Builder value) {
-      clearId();
-      idBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'id' field has an active Builder instance
-     * @return True if the 'id' field has an active Builder instance
-     */
-    public boolean hasIdBuilder() {
-      return idBuilder != null;
-    }
 
     /**
       * Clears the value of the 'id' field.
@@ -302,7 +278,6 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
       */
     public com.learnavro.domain.generated.CoffeeUpdateEvent.Builder clearId() {
       id = null;
-      idBuilder = null;
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -352,16 +327,7 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
     public CoffeeUpdateEvent build() {
       try {
         CoffeeUpdateEvent record = new CoffeeUpdateEvent();
-        if (idBuilder != null) {
-          try {
-            record.id = this.idBuilder.build();
-          } catch (org.apache.avro.AvroMissingFieldException e) {
-            e.addParentField(record.getSchema().getField("id"));
-            throw e;
-          }
-        } else {
-          record.id = fieldSetFlags()[0] ? this.id : (com.learnavro.domain.generated.OrderId) defaultValue(fields()[0]);
-        }
+        record.id = fieldSetFlags()[0] ? this.id : (java.util.UUID) defaultValue(fields()[0]);
         record.status = fieldSetFlags()[1] ? this.status : (com.learnavro.domain.generated.OrderStatus) defaultValue(fields()[1]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
@@ -390,49 +356,6 @@ public class CoffeeUpdateEvent extends org.apache.avro.specific.SpecificRecordBa
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
-  @Override protected boolean hasCustomCoders() { return true; }
-
-  @Override public void customEncode(org.apache.avro.io.Encoder out)
-    throws java.io.IOException
-  {
-    this.id.customEncode(out);
-
-    out.writeEnum(this.status.ordinal());
-
-  }
-
-  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
-    throws java.io.IOException
-  {
-    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
-    if (fieldOrder == null) {
-      if (this.id == null) {
-        this.id = new com.learnavro.domain.generated.OrderId();
-      }
-      this.id.customDecode(in);
-
-      this.status = com.learnavro.domain.generated.OrderStatus.values()[in.readEnum()];
-
-    } else {
-      for (int i = 0; i < 2; i++) {
-        switch (fieldOrder[i].pos()) {
-        case 0:
-          if (this.id == null) {
-            this.id = new com.learnavro.domain.generated.OrderId();
-          }
-          this.id.customDecode(in);
-          break;
-
-        case 1:
-          this.status = com.learnavro.domain.generated.OrderStatus.values()[in.readEnum()];
-          break;
-
-        default:
-          throw new java.io.IOException("Corrupt ResolvingDecoder.");
-        }
-      }
-    }
-  }
 }
 
 

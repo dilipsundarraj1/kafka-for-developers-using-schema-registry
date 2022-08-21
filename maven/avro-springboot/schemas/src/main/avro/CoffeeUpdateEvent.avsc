@@ -5,14 +5,20 @@
   "fields": [
     {
       "name": "id",
-      "type": "OrderId"
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
     },
     {
       "name": "status",
-      "type":{
-        "type" : "enum",
+      "type": {
+        "type": "enum",
         "name": "OrderStatus",
-        "symbols" : ["PROCESSING", "READY_FOR_PICK_UP"]
+        "symbols": [
+          "PROCESSING",
+          "READY_FOR_PICK_UP"
+        ]
       }
     }
   ]
