@@ -2,6 +2,7 @@ package com.learnavro.consumer;
 
 import com.learnavro.deserializer.CustomAvroDeserializer;
 import com.learnavro.domain.generated.CoffeeOrder;
+import com.learnavro.domain.generated.CoffeeUpdateEvent;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -52,6 +53,16 @@ public class CoffeeOrdersConsumerSchemaRegistry {
                     //     GenericRecord coffeeOrder =record.value();
                     CoffeeOrder coffeeOrder =record.value();
                     log.info("Consumed message: \n" + record.key() + " : " + coffeeOrder.toString());
+
+//                    var genericRecord = record.value();
+//
+//                    if(genericRecord instanceof CoffeeOrder){
+//                        var coffeeOrder =(CoffeeOrder) genericRecord;
+//                        log.info("coffeeOrder : {}", coffeeOrder);
+//                    }else if (genericRecord instanceof CoffeeUpdateEvent){
+//                        var coffeeOrderUpdateEvent =(CoffeeUpdateEvent) genericRecord;
+//                        log.info("coffeeOrderUpdateEvent : {}", coffeeOrderUpdateEvent);
+//                    }
                 }
             }
             catch (Exception e){

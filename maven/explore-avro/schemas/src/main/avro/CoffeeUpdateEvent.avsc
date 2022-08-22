@@ -5,14 +5,18 @@
   "fields": [
     {
       "name": "id",
-      "type": "int"
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
     },
+
     {
-      "name": "status",
-      "type":{
-        "type" : "enum",
+      "name": "status", //IN_STORE, CURBSIDE
+      "type": {
+        "type": "enum",
         "name": "OrderStatus",
-        "symbols" : ["PROCESSING", "READY_FOR_PICK_UP"]
+        "symbols": ["PROCESSING", "READY_FOR_PICKUP"]
       }
     }
   ]
