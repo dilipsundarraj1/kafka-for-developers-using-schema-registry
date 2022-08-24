@@ -11,8 +11,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.Valid;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -38,6 +40,9 @@ public class CoffeeOrderDTO {
     @NotNull(message = "coffeeOrder.pickUp is mandatory")
     @JsonProperty("pickUp")
     private PickUp pickUp;
+
+    @NotNull
+    private LocalDateTime orderedTime;
 
     private String status;
 
